@@ -141,7 +141,6 @@ ul { list-style: none; }
   color: #1A1A1A;
 }
 .pill.solid { background: #1A1A1A; color: #F7F5FA; }
-.pill.blush { background: #EADCF5; border-color: #B58FD6; color: #57068C; }
 
 .hero-photo {
   display: flex;
@@ -176,33 +175,6 @@ ul { list-style: none; }
   object-fit: cover;
   display: block;
 }
-
-.badge {
-  position: absolute;
-  top: -10px;
-  right: -28px;
-  width: 98px;
-  height: 98px;
-  border-radius: 50%;
-  background: #57068C;
-  color: #F7F5FA;
-  display: grid;
-  place-items: center;
-}
-.badge svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.badge text {
-  font-family: 'Archivo', sans-serif;
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  fill: #F7F5FA;
-}
-.badge-core { font-size: 0.9rem; }
 
 .hero-photo figcaption {
   font-family: 'Caveat', cursive;
@@ -375,7 +347,6 @@ ul { list-style: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 56px; padding: 48px 0 72px; }
   .hero-photo { order: -1; }
   .arch-wrap { width: 280px; height: 370px; }
-  .badge { width: 80px; height: 80px; right: -16px; }
   .issue-mid { display: none; }
   .skills-grid { grid-template-columns: 1fr; }
 }
