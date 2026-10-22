@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ethan Chou · Marketing Analytics Portfolio</title>
+  <meta name="description" content="Ethan Chou, M.S. Marketing Analytics student at NYU. Customer segmentation, churn and CLV analysis, and GA4 tracking design." />
+  <title>Ethan Chou · Marketing Analytics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
@@ -14,132 +15,183 @@
   <header class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="#top">ETHAN <em>CHOU</em></a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Main">
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero" id="top">
-    <div class="wrap hero-grid">
-      <div class="hero-text">
-        <div class="meta-label">PORTFOLIO · MARKETING ANALYTICS</div>
-        <h1 class="hero-title">
-          Data-Driven Strategy & <br />
-          <em>Econometric Modeling</em>
-        </h1>
-        <p class="hero-copy">
-          M.S. in Marketing Analytics student. Combining statistical modeling, customer segmentation, 
-          and quantitative research to solve complex business challenges.
-        </p>
-        <div class="hero-tags">
-          <span class="pill solid">NYU '27</span>
-          <span class="pill">Python</span>
-          <span class="pill">SQL</span>
-          <span class="pill">Customer Segmentation</span>
-          <span class="pill">CLV</span>
+  <main id="top">
+
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="status"><span class="dot" aria-hidden="true"></span>Open to internships and collaboration</p>
+          <h1 class="hero-title rise r1">Data-driven strategy and econometric modeling.</h1>
+          <p class="hero-copy rise r2">
+            M.S. in Marketing Analytics student. I use statistical modeling, customer segmentation,
+            and quantitative research to answer business questions.
+          </p>
+          <ul class="hero-tags rise r3" aria-label="Focus areas">
+            <li class="pill solid">NYU '27</li>
+            <li class="pill">Python</li>
+            <li class="pill">SQL</li>
+            <li class="pill">Customer segmentation</li>
+            <li class="pill">CLV</li>
+          </ul>
+          <dl class="stats rise r4">
+            <div><dt>Projects</dt><dd>3</dd></div>
+            <div><dt>Languages</dt><dd>Python, SQL, SAS</dd></div>
+            <div><dt>Class of</dt><dd>2027</dd></div>
+          </dl>
+        </div>
+        <div class="hero-photo rise r2">
+          <div class="arch" role="img" aria-label="Photo placeholder">
+            <span class="arch-placeholder">Photo</span>
+          </div>
         </div>
       </div>
-      <div class="hero-photo">
-        <div class="arch">
-          <div class="arch-placeholder">Photo Placeholder</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Selected Analytics Projects</h2>
-        <span class="tail">Data, Code & Strategy</span>
-      </div>
+    <section id="projects" class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Selected projects</h2>
+          <span class="tail">Data, code, and strategy</span>
+        </header>
 
-      <article class="project">
-        <div class="p-meta">
-          <span class="p-no">Project 01 · Python & Machine Learning</span>
-          <h3>Customer Segmentation & RFM Scoring</h3>
+        <article class="project" data-project>
+          <div class="project-top">
+            <span class="p-no">01</span>
+            <span class="p-kind">Python · Machine learning</span>
+          </div>
+          <h3>Customer segmentation and RFM scoring</h3>
           <p class="p-desc">
-            Implemented quartile-based RFM scoring and K-Means clustering on retail transaction data to identify high-value customer cohorts.
+            Quartile-based RFM scoring and K-Means clustering on retail transaction data to identify high-value customer cohorts.
           </p>
           <div class="p-tags">
             <span class="tag">Python</span>
             <span class="tag">K-Means</span>
-            <span class="tag">RFM Modeling</span>
+            <span class="tag">RFM modeling</span>
           </div>
-          <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub Repo →</a>
-        </div>
-      </article>
+          <div class="project-actions">
+            <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
+            <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
+          </div>
+          <div class="project-body" hidden>
+            <div>
+              <p>Scored each customer on recency, frequency, and monetary value, then grouped them with K-Means to separate cohorts that need different retention actions.</p>
+              <p class="p-result">Add the key result or chart here.</p>
+            </div>
+          </div>
+        </article>
 
-      <article class="project">
-        <div class="p-meta">
-          <span class="p-no">Project 02 · SQL & Cohort Analysis</span>
-          <h3>Customer Churn Dynamics & CLV Analysis</h3>
+        <article class="project" data-project>
+          <div class="project-top">
+            <span class="p-no">02</span>
+            <span class="p-kind">SQL · Cohort analysis</span>
+          </div>
+          <h3>Customer churn dynamics and CLV analysis</h3>
           <p class="p-desc">
-            Constructed modular MySQL queries to analyze tenure cohorts, retention dynamics, and CLV risk factors on telecommunication data.
+            Modular MySQL queries that analyze tenure cohorts, retention dynamics, and customer lifetime value risk factors in telecom data.
           </p>
           <div class="p-tags">
             <span class="tag">MySQL</span>
-            <span class="tag">Cohort Analysis</span>
+            <span class="tag">Cohort analysis</span>
             <span class="tag">CLV</span>
           </div>
-          <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub Repo →</a>
-        </div>
-      </article>
+          <div class="project-actions">
+            <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
+            <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
+          </div>
+          <div class="project-body" hidden>
+            <div>
+              <p>Built the queries as reusable modules so each cohort cut, retention curve, and CLV calculation can be rerun on new data.</p>
+              <p class="p-result">Add the key result or chart here.</p>
+            </div>
+          </div>
+        </article>
 
-      <article class="project">
-        <div class="p-meta">
-          <span class="p-no">Project 03 · Tracking & Strategy</span>
-          <h3>GA4 Event Taxonomy & Relational Database Design</h3>
+        <article class="project" data-project>
+          <div class="project-top">
+            <span class="p-no">03</span>
+            <span class="p-kind">Tracking · Strategy</span>
+          </div>
+          <h3>GA4 event taxonomy and relational database design</h3>
           <p class="p-desc">
-            Engineered a structured relational schema and full Google Analytics 4 event tracking architecture for retail analytics.
+            A structured relational schema and full Google Analytics 4 event tracking architecture for retail analytics.
           </p>
           <div class="p-tags">
             <span class="tag">GA4</span>
             <span class="tag">BigQuery</span>
-            <span class="tag">Schema Design</span>
+            <span class="tag">Schema design</span>
           </div>
-          <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View Project Scope →</a>
-        </div>
-      </article>
-    </div>
-  </section>
+          <div class="project-actions">
+            <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
+            <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View project scope</a>
+          </div>
+          <div class="project-body" hidden>
+            <div>
+              <p>Defined the event naming rules and tables first, so every tracked action lands in a schema that analysts can query consistently.</p>
+              <p class="p-result">Add the key result or chart here.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <section id="skills" class="section alt-bg">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Technical Stack</h2>
+    <section id="skills" class="section alt-bg">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Toolkit</h2>
+          <span class="tail">Skills and tools</span>
+        </header>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Languages and querying</h3>
+            <p>Python (Pandas, NumPy, Scikit-learn), SQL (MySQL, BigQuery), SAS</p>
+          </div>
+          <div class="skill-card">
+            <h3>Methods</h3>
+            <p>Econometric modeling, RFM analysis, A/B testing, survival analysis, CLV</p>
+          </div>
+          <div class="skill-card">
+            <h3>Analytics and BI</h3>
+            <p>Google Analytics 4, Looker Studio, Jupyter Notebook, PyCharm, Git and GitHub</p>
+          </div>
+        </div>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Languages & Querying</h3>
-          <p>Python (Pandas, NumPy, Scikit-learn), SQL (MySQL, BigQuery), SAS</p>
-        </div>
-        <div class="skill-card">
-          <h3>Methodologies</h3>
-          <p>Econometric Modeling, RFM Analysis, A/B Testing, Survival Analysis, CLV</p>
-        </div>
-        <div class="skill-card">
-          <h3>Analytics & BI</h3>
-          <p>Google Analytics 4, Looker Studio, Jupyter Notebook, PyCharm, Git/GitHub</p>
+    </section>
+
+    <section id="education" class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Education</h2>
+        </header>
+        <div class="edu">
+          <p class="edu-school">New York University</p>
+          <p class="edu-degree">M.S. in Marketing Analytics · Expected 2027</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <footer id="contact" class="footer">
     <div class="wrap footer-inner">
-      <h2>Let's Connect</h2>
+      <h2>Let's connect</h2>
       <p>Interested in quantitative marketing analytics or collaboration?</p>
       <div class="footer-links">
         <a href="https://github.com/cc9404" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <div class="copy">© 2026 Ethan Chou. Hosted on GitHub Pages.</div>
+      <p class="copy">© 2026 Ethan Chou</p>
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
