@@ -73,3 +73,31 @@
   // Safety net: never leave the visitor stuck behind the loader
   setTimeout(hide, 5000);
 })();
+
+
+// Scroll reveal for sections and cards.
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  var targets = document.querySelectorAll(
+    '.section-head, .project, .skill-card, .edu, .footer-inner > *'
+  );
+  targets.forEach(function (el) { el.classList.add('reveal'); });
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  targets.forEach(function (el) { observer.observe(el); });
+})();

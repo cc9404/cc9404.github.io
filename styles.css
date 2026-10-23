@@ -198,15 +198,18 @@ ul { list-style: none; }
   animation: ticker 38s linear infinite;
 }
 .tick {
-  font-family: 'Bodoni Moda', Georgia, serif;
-  font-style: italic;
-  font-size: 1.1rem;
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #3A3545;
   padding: 16px 0;
 }
 .tick i {
   font-style: normal;
-  color: #57068C;
-  padding: 0 26px;
+  color: #8A8394;
+  padding: 0 22px;
 }
 @keyframes ticker {
   to { transform: translateX(-50%); }
@@ -417,4 +420,40 @@ html.is-loading { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .site-loader__ring,
   .site-loader__check { animation: none; stroke-dashoffset: 0; }
+}
+
+
+/* Scroll reveal: content is only hidden when JavaScript is running */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Project card hover: lift slightly and move the link arrow */
+.project {
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -18px rgba(87, 6, 140, 0.35);
+  border-color: #C9B2E3;
+}
+.p-link::after {
+  content: " →";
+  display: inline-block;
+  transition: transform 0.3s var(--ease);
+}
+.project:hover .p-link::after {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .project, .project:hover { transform: none; transition: none; }
+  .p-link::after, .project:hover .p-link::after { transition: none; transform: none; }
 }
