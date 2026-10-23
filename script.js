@@ -45,7 +45,7 @@
 })();
 
 
-// Page loader: keep it visible through the 2.2s check animation,
+// Page loader: keep it visible through the 1.2s check animation,
 // then fade it out once the page has finished loading.
 (function () {
   var loader = document.getElementById('siteLoader');
@@ -53,7 +53,7 @@
 
   document.documentElement.classList.add('is-loading');
 
-  var MIN_SHOW_MS = 2200; // ring (2s) + check (0.2s)
+  var MIN_SHOW_MS = 1200; // ring (1s) + check (0.2s)
   var start = Date.now();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

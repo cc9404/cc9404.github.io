@@ -397,13 +397,13 @@ html.is-loading { overflow: hidden; }
   transform-origin: center;
   stroke-dasharray: 380;
   stroke-dashoffset: 380;
-  animation: site-loader-ring 2s ease-in-out forwards;
+  animation: site-loader-ring 1s ease-in-out forwards;
 }
 .site-loader__check {
   stroke: #57068C;
   stroke-dasharray: 45;
   stroke-dashoffset: 45;
-  animation: site-loader-check 0.2s 2s ease-in-out forwards;
+  animation: site-loader-check 0.2s 1s ease-in-out forwards;
 }
 @keyframes site-loader-ring {
   0% { stroke-dashoffset: 380; }
