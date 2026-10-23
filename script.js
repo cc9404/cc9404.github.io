@@ -81,7 +81,7 @@
   document.documentElement.classList.add('js');
 
   var targets = document.querySelectorAll(
-    '.section-head, .project, .skill-card, .edu, .footer-inner > *'
+    '.section-head, .project, .skill-card, .edu-card, .exp-item, .footer-inner > *'
   );
   targets.forEach(function (el) { el.classList.add('reveal'); });
 
@@ -100,4 +100,18 @@
   }, { threshold: 0.12 });
 
   targets.forEach(function (el) { observer.observe(el); });
+})();
+
+
+// Category stickers: a short stamp on click, then the normal anchor scroll.
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-stamp]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (reduce) return;
+      el.classList.remove('is-stamped');
+      void el.offsetWidth; // restart the animation
+      el.classList.add('is-stamped');
+    });
+  });
 })();

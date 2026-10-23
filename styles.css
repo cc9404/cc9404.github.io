@@ -457,3 +457,184 @@ html.is-loading { overflow: hidden; }
   .project, .project:hover { transform: none; transition: none; }
   .p-link::after, .project:hover .p-link::after { transition: none; transform: none; }
 }
+
+
+/* ---------- Section numbering ---------- */
+.sec-no {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #57068C;
+  margin-right: 14px;
+  vertical-align: middle;
+}
+.cat-block + .cat-block { margin-top: 72px; }
+.cat-head { margin-bottom: 32px; }
+
+/* ---------- Category stickers ---------- */
+.stickers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.sticker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 28px 26px;
+  background: #FFFFFF;
+  border: 1px solid #1A1A1A;
+  border-radius: 6px;
+  color: #1A1A1A;
+  text-decoration: none;
+  transform: rotate(-1.4deg);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.sticker:nth-child(2) { transform: rotate(0.9deg); }
+.sticker:nth-child(3) { transform: rotate(-0.7deg); }
+.sticker:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 32px -20px rgba(87, 6, 140, 0.45);
+}
+.sticker:focus-visible { outline: 2px solid #57068C; outline-offset: 4px; }
+.sticker.is-stamped { animation: stamp 0.4s var(--ease); }
+@keyframes stamp {
+  0% { transform: rotate(0deg) scale(1); }
+  40% { transform: rotate(0deg) scale(0.94); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+.sticker-count {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5A5566;
+}
+.sticker h3 {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+.sticker p { font-size: 0.92rem; color: #5A5566; }
+.sticker-note {
+  margin-top: auto;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #57068C;
+}
+
+/* ---------- Experience ---------- */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #1A1A1A;
+  border-radius: 10px;
+  background: #F7F5FA;
+  margin-bottom: 64px;
+}
+.stats-strip > div {
+  padding: 26px 18px;
+  text-align: center;
+  border-left: 1px solid #E4DDEC;
+}
+.stats-strip > div:first-child { border-left: 0; }
+.stats-strip > div { display: flex; flex-direction: column-reverse; }
+.stats-strip dd {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 2.2rem;
+  color: #57068C;
+  line-height: 1.1;
+}
+.stats-strip dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5A5566;
+  margin-top: 8px;
+}
+.exp-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  padding: 36px 0;
+  border-top: 1px solid #E4DDEC;
+}
+.exp-date {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.exp-place { font-size: 0.85rem; color: #5A5566; margin-top: 4px; }
+.exp-body h3 {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+}
+.exp-body h3 em { font-style: italic; color: #57068C; }
+.exp-body ul { display: grid; gap: 10px; }
+.exp-body li {
+  position: relative;
+  padding-left: 18px;
+  color: #3A3545;
+  font-size: 0.97rem;
+}
+.exp-body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #57068C;
+}
+
+/* ---------- Education ---------- */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.edu-card {
+  background: #FFFFFF;
+  border: 1px solid #1A1A1A;
+  border-radius: 12px;
+  padding: 34px 30px;
+}
+.edu-date {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #57068C;
+}
+.edu-card h3 {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 10px 0 10px;
+}
+.edu-degree { font-size: 0.85rem; font-weight: 600; color: #3A3545; }
+.edu-note { font-size: 0.9rem; color: #5A5566; margin-top: 12px; }
+
+/* ---------- Toolkit ---------- */
+.cert-list { display: grid; gap: 8px; font-size: 0.9rem; color: #3A3545; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .stickers { grid-template-columns: 1fr; }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .stats-strip > div:nth-child(3) { border-left: 0; }
+  .stats-strip > div:nth-child(n+3) { border-top: 1px solid #E4DDEC; }
+  .exp-item { grid-template-columns: 1fr; gap: 14px; }
+  .edu-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker, .sticker:hover { transition: none; transform: none; }
+  .sticker.is-stamped { animation: none; }
+}
