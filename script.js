@@ -43,3 +43,33 @@
     sections.forEach(function (s) { observer.observe(s.target); });
   }
 })();
+
+
+// Page loader: keep it visible through the 2.2s check animation,
+// then fade it out once the page has finished loading.
+(function () {
+  var loader = document.getElementById('siteLoader');
+  if (!loader) return;
+
+  document.documentElement.classList.add('is-loading');
+
+  var MIN_SHOW_MS = 2200; // ring (2s) + check (0.2s)
+  var start = Date.now();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function hide() {
+    document.documentElement.classList.remove('is-loading');
+    loader.classList.add('is-done');
+  }
+
+  function finish() {
+    var wait = reduce ? 0 : Math.max(0, MIN_SHOW_MS - (Date.now() - start));
+    setTimeout(hide, wait);
+  }
+
+  if (document.readyState === 'complete') finish();
+  else window.addEventListener('load', finish);
+
+  // Safety net: never leave the visitor stuck behind the loader
+  setTimeout(hide, 5000);
+})();
