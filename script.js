@@ -196,8 +196,12 @@
     var headerH = header ? header.offsetHeight : 0;
     var line = headerH + 140;
     var current = null;
+    // Pick the section whose top is closest above the line (the one on screen),
+    // rather than the last link in nav order, since Explore sits above Experience.
+    var bestTop = -Infinity;
     pairs.forEach(function (p) {
-      if (p.el.getBoundingClientRect().top <= line) current = p;
+      var t = p.el.getBoundingClientRect().top;
+      if (t <= line && t > bestTop) { bestTop = t; current = p; }
     });
     if (window.pageYOffset < 40) current = null;
 

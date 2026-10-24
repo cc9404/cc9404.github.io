@@ -962,3 +962,40 @@ html.is-loading { overflow: hidden; }
 }
 .brand:hover::after,
 .brand.is-current::after { transform: scaleX(1); }
+
+
+/* ---------- Section titles: larger, with a rule and a one-line summary ---------- */
+.section-head {
+  margin-bottom: 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #1A1A1A;
+  align-items: flex-end;
+}
+.section-head h2 {
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.section-head h2 .sec-no {
+  font-size: 1.15rem;
+  vertical-align: middle;
+}
+.cat-head {
+  border-bottom: 1px solid #E4DDEC;
+  padding-bottom: 14px;
+}
+.cat-head h2 {
+  font-size: clamp(2rem, 3.6vw, 2.6rem);
+}
+.section-sub {
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #3A3545;
+  margin: 18px 0 48px;
+}
+@media (max-width: 600px) {
+  .section-head h2 { font-size: 2.3rem; }
+}
