@@ -823,7 +823,6 @@ html.is-loading { overflow: hidden; }
   transition: transform 0.25s var(--ease), rotate 0.4s var(--ease), translate 0.4s var(--ease),
               scale 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
   will-change: transform;
-  overflow: hidden;
 }
 .sticker:nth-child(1) { --rot: -1.6deg; }
 .sticker:nth-child(2) { --rot: 0.9deg; }
@@ -892,20 +891,24 @@ html.is-loading { overflow: hidden; }
   opacity: 1;
   translate: 0 0;
 }
-/* A soft ring that keeps pulsing on every card, staggered so they do not blink together */
-.sticker {
-  animation: sticker-hint 3s ease-out infinite;
+/* A soft ring on its own layer, so hover and click never restart it */
+.sticker::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  animation: sticker-ring 3s ease-out infinite;
 }
-.sticker:nth-child(2) { animation-delay: 1s; }
-.sticker:nth-child(3) { animation-delay: 2s; }
-.sticker.is-active { animation: none; }
-@keyframes sticker-hint {
+.sticker:nth-child(2)::before { animation-delay: 1s; }
+.sticker:nth-child(3)::before { animation-delay: 2s; }
+@keyframes sticker-ring {
   0% { box-shadow: 0 0 0 0 rgba(87, 6, 140, 0.4); }
-  55% { box-shadow: 0 0 0 16px rgba(87, 6, 140, 0); }
-  100% { box-shadow: 0 0 0 16px rgba(87, 6, 140, 0); }
+  55%, 100% { box-shadow: 0 0 0 16px rgba(87, 6, 140, 0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sticker { animation: none; }
+  .sticker::before { animation: none; }
   .sticker-open { transition: none; }
 }
 }
@@ -921,4 +924,13 @@ html.is-loading { overflow: hidden; }
   font-size: 1.14rem;
   line-height: 1.7;
   letter-spacing: 0.005em;
+}
+
+
+/* ---------- Card descriptions: same typeface as paragraphs ---------- */
+.sticker p {
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  color: #3A3545;
 }
