@@ -33,7 +33,7 @@
   if ('IntersectionObserver' in window && sections.length) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
+        if (!entry.isIntersecting || window.__navLock) return;
         sections.forEach(function (s) {
           s.link.classList.toggle('active', s.target === entry.target);
         });
@@ -162,6 +162,36 @@
       card.classList.remove('is-stamped');
       void card.offsetWidth;
       card.classList.add('is-stamped');
+    });
+  });
+})();
+
+
+// Nav links: jump directly to the section, highlight the clicked link at once,
+// and keep the scroll-spy from flickering through the sections on the way.
+(function () {
+  var links = document.querySelectorAll('.nav-links a[href^="#"]');
+  var header = document.querySelector('.topbar');
+  var timer = null;
+
+  links.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+
+      var headerH = header ? header.offsetHeight : 0;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
+
+      window.__navLock = true;
+      clearTimeout(timer);
+      links.forEach(function (l) { l.classList.toggle('active', l === link); });
+
+      window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+      history.replaceState(null, '', '#' + id);
+
+      timer = setTimeout(function () { window.__navLock = false; }, 700);
     });
   });
 })();
