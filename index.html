@@ -88,27 +88,30 @@
       <div class="wrap">
         <header class="section-head">
           <h2><span class="sec-no">No. 01</span> Explore by category</h2>
-          <span class="tail">Pick a group to jump in</span>
+          <span class="tail">Tap a card to dive in</span>
         </header>
 
         <div class="stickers">
           <a class="sticker" href="#cat-analytics" data-stamp>
-            <span class="sticker-count">03 projects</span>
+            <span class="sticker-open" aria-hidden="true">Open ↗</span>
+            <span class="sticker-count">3 projects</span>
             <h3>Marketing analytics &amp; SQL</h3>
             <p>Retention, funnels, and customer segmentation.</p>
             <span class="sticker-note">start here →</span>
           </a>
           <a class="sticker" href="#cat-strategy" data-stamp>
-            <span class="sticker-count">02 projects</span>
+            <span class="sticker-open" aria-hidden="true">Open ↗</span>
+            <span class="sticker-count">2 projects</span>
             <h3>Brand &amp; growth strategy</h3>
             <p>Board-level plans and competitive strategy.</p>
-            <span class="sticker-note">the big picture →</span>
+            <span class="sticker-note">see the strategy →</span>
           </a>
           <a class="sticker" href="#cat-creative" data-stamp>
-            <span class="sticker-count">02 projects</span>
+            <span class="sticker-open" aria-hidden="true">Open ↗</span>
+            <span class="sticker-count">2 projects</span>
             <h3>Campaigns &amp; creative</h3>
             <p>Client-facing campaign planning, end to end.</p>
-            <span class="sticker-note">the team work →</span>
+            <span class="sticker-note">see the teamwork →</span>
           </a>
         </div>
       </div>
@@ -184,27 +187,94 @@
 
     <!-- Selected projects, grouped -->
     <section id="selected" class="section">
-      <div class="wrap">
+    <div class="wrap">
 
         <div id="cat-analytics" class="cat-block">
           <header class="section-head cat-head">
             <h2><span class="sec-no">A.</span> Marketing analytics &amp; SQL</h2>
-            <span class="tail">03 projects</span>
+            <span class="tail">3 projects</span>
           </header>
 
           <article class="project" data-project>
             <div class="project-top">
               <span class="p-no">01</span>
               <span class="p-kind">SQL · Churn analysis</span>
-      <div id="cat-strategy" class="cat-block">
-          <header class="section-head cat-head">
-            <h2><span class="sec-no">B.</span> Brand &amp; growth strategy</h2>
-            <span class="tail">02 projects</span>
-          </header>
+            </div>
+            <h3>Telco Customer Retention &amp; Churn Analytics</h3>
+            <p class="p-desc">Analysis of 7,043 telecom accounts to find who churns and when, and which bundle strategies reduce it.</p>
+            <div class="p-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Churn analysis</span>
+              <span class="tag">Retention</span>
+            </div>
+            <div class="project-actions">
+              <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
+              <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
+            </div>
+            <div class="project-body" hidden>
+              <div>
+                <p>The analysis surfaced a 55.2% churn cliff in the first six months, and showed that bundle strategies can push churn below 15%.</p>
+              </div>
+            </div>
+          </article>
 
           <article class="project" data-project>
             <div class="project-top">
               <span class="p-no">02</span>
+              <span class="p-kind">SQL · Funnel analysis</span>
+            </div>
+            <h3>E-Commerce Marketing Analytics</h3>
+            <p class="p-desc">A six-module analysis of an online retail business, covering traffic, funnels, channel mix, seasonality, and retention.</p>
+            <div class="p-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">A/B testing</span>
+              <span class="tag">Channel ROI</span>
+            </div>
+            <div class="project-actions">
+              <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
+              <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
+            </div>
+            <div class="project-body" hidden>
+              <div>
+                <p>Modules cover traffic source ROI, landing-page funnels and A/B lift, channel mix, seasonality, and customer retention.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="project" data-project>
+            <div class="project-top">
+              <span class="p-no">03</span>
+              <span class="p-kind">Clustering · Machine learning</span>
+            </div>
+            <h3>Customer Segmentation &amp; RFM Scoring</h3>
+            <p class="p-desc">Quartile-based RFM scoring and K-Means clustering on retail transaction data to identify high-value customer cohorts.</p>
+            <div class="p-tags">
+              <span class="tag">K-Means</span>
+              <span class="tag">RFM modeling</span>
+            </div>
+            <div class="project-actions">
+              <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
+              <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
+            </div>
+            <div class="project-body" hidden>
+              <div>
+                <p>Each customer is scored on recency, frequency, and monetary value, then grouped with K-Means into cohorts that need different retention actions.</p>
+                <p class="p-result">Add the key result or chart here.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div id="cat-strategy" class="cat-block">
+          <header class="section-head cat-head">
+            <h2><span class="sec-no">B.</span> Brand &amp; growth strategy</h2>
+            <span class="tail">2 projects</span>
+          </header>
+
+          <article class="project" data-project>
+            <div class="project-top">
+              <span class="p-no">04</span>
               <span class="p-kind">Team project · Board presentation</span>
             </div>
             <h3>LVMH Strategic Plan, 2026 to 2030</h3>
@@ -228,7 +298,7 @@
 
           <article class="project" data-project>
             <div class="project-top">
-              <span class="p-no">03</span>
+              <span class="p-no">05</span>
               <span class="p-kind">Individual · Competitive strategy</span>
             </div>
             <h3>RX Bar Growth Strategy</h3>
@@ -249,17 +319,18 @@
               </div>
             </div>
           </article>
+
         </div>
 
         <div id="cat-creative" class="cat-block">
           <header class="section-head cat-head">
             <h2><span class="sec-no">C.</span> Campaigns &amp; creative</h2>
-            <span class="tail">02 projects</span>
+            <span class="tail">2 projects</span>
           </header>
 
           <article class="project" data-project>
             <div class="project-top">
-              <span class="p-no">04</span>
+              <span class="p-no">06</span>
               <span class="p-kind">Team project · Client campaign</span>
             </div>
             <h3>MUD JEANS Client Permanent Campaign Plan</h3>
@@ -283,7 +354,7 @@
 
           <article class="project" data-project>
             <div class="project-top">
-              <span class="p-no">05</span>
+              <span class="p-no">07</span>
               <span class="p-kind">Integrated campaign</span>
             </div>
             <h3>Wilson Marketing Plan</h3>
@@ -305,79 +376,13 @@
               </div>
             </div>
           </article>
+
         </div>
 
-              </div>
-            <h3>Telco Customer Retention &amp; Churn Analytics</h3>
-            <p class="p-desc">Analysis of 7,043 telecom accounts to find who churns and when, and which bundle strategies reduce it.</p>
-            <div class="p-tags">
-              <span class="tag">SQL</span>
-              <span class="tag">Churn analysis</span>
-              <span class="tag">Retention</span>
-            </div>
-            <div class="project-actions">
-              <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
-              <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
-            </div>
-            <div class="project-body" hidden>
-              <div>
-                <p>The analysis surfaced a 55.2% churn cliff in the first six months, and showed that bundle strategies can push churn below 15%.</p>
-              </div>
-            </div>
-          </article>
+    </div>
+  </section>
 
-          <article class="project" data-project>
-            <div class="project-top">
-              <span class="p-no">06</span>
-              <span class="p-kind">SQL · Funnel analysis</span>
-            </div>
-            <h3>E-Commerce Marketing Analytics</h3>
-            <p class="p-desc">A six-module analysis of an online retail business, covering traffic, funnels, channel mix, seasonality, and retention.</p>
-            <div class="p-tags">
-              <span class="tag">SQL</span>
-              <span class="tag">A/B testing</span>
-              <span class="tag">Channel ROI</span>
-            </div>
-            <div class="project-actions">
-              <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
-              <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
-            </div>
-            <div class="project-body" hidden>
-              <div>
-                <p>Modules cover traffic source ROI, landing-page funnels and A/B lift, channel mix, seasonality, and customer retention.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="project" data-project>
-            <div class="project-top">
-              <span class="p-no">07</span>
-              <span class="p-kind">Clustering · Machine learning</span>
-            </div>
-            <h3>Customer Segmentation &amp; RFM Scoring</h3>
-            <p class="p-desc">Quartile-based RFM scoring and K-Means clustering on retail transaction data to identify high-value customer cohorts.</p>
-            <div class="p-tags">
-              <span class="tag">K-Means</span>
-              <span class="tag">RFM modeling</span>
-            </div>
-            <div class="project-actions">
-              <button class="toggle" type="button" aria-expanded="false">Read the full story</button>
-              <a class="p-link" href="https://github.com/cc9404" target="_blank" rel="noopener">View GitHub repo</a>
-            </div>
-            <div class="project-body" hidden>
-              <div>
-                <p>Each customer is scored on recency, frequency, and monetary value, then grouped with K-Means into cohorts that need different retention actions.</p>
-                <p class="p-result">Add the key result or chart here.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section alt-bg">
+  <section id="education" class="section alt-bg">
       <div class="wrap">
         <header class="section-head">
           <h2><span class="sec-no">No. 03</span> Education</h2>
