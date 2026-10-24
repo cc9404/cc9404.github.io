@@ -116,12 +116,12 @@
     <!-- Work experience -->
     <section id="experience" class="section alt-bg">
       <div class="wrap">
-        <dl class="stats-strip">
-          <div><dt>GPA, M.S. at NYU</dt><dd data-count="3.92" data-decimals="2">3.92</dd></div>
-          <div><dt>Enterprise B2B negotiations supported</dt><dd data-count="5">5</dd></div>
-          <div><dt>Revenue lift from bundle pricing</dt><dd data-count="25" data-prefix="+" data-suffix="%">+25%</dd></div>
-          <div><dt>Conversion rate from the bundle change</dt><dd data-count="8.5" data-decimals="1" data-suffix="%">8.5%</dd></div>
-          <div><dt>Telecom accounts analyzed</dt><dd data-count="7043" data-commas="1">7,043</dd></div>
+        <dl class="stats-strip" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));">
+          <div><dt style="min-height:3em;display:flex;align-items:flex-start;justify-content:center;text-align:center;line-height:1.5;margin-top:12px;">GPA, M.S. at NYU</dt><dd data-count="3.92" data-decimals="2">3.92</dd></div>
+          <div><dt style="min-height:3em;display:flex;align-items:flex-start;justify-content:center;text-align:center;line-height:1.5;margin-top:12px;">CES negotiations supported</dt><dd data-count="5">5</dd></div>
+          <div><dt style="min-height:3em;display:flex;align-items:flex-start;justify-content:center;text-align:center;line-height:1.5;margin-top:12px;">Revenue lift from bundle pricing</dt><dd data-count="25" data-prefix="+" data-suffix="%">+25%</dd></div>
+          <div><dt style="min-height:3em;display:flex;align-items:flex-start;justify-content:center;text-align:center;line-height:1.5;margin-top:12px;">Conversion rate from the bundle change</dt><dd data-count="8.5" data-decimals="1" data-suffix="%">8.5%</dd></div>
+          <div><dt style="min-height:3em;display:flex;align-items:flex-start;justify-content:center;text-align:center;line-height:1.5;margin-top:12px;">Telecom accounts analyzed</dt><dd data-count="7043" data-commas="1">7,043</dd></div>
         </dl>
 
         <header class="section-head">
@@ -175,7 +175,7 @@
           <div class="exp-body">
             <h3>In Win Development Inc.</h3>
             <p class="exp-role">Marketing Specialist</p>
-            <p class="exp-text">For In Win's enterprise B2B CES negotiations, I supported five negotiations by building the decks and one-pagers sales used in the room. I wrote MRDs that translated customer needs into product specs, and built standardized campaign attribution dashboards. I also cleaned the transaction data behind a bundle pricing change that lifted revenue 25% at an 8.5% conversion rate.</p>
+            <p class="exp-text">For In Win's enterprise B2B negotiations at CES, the global consumer electronics show, I supported five negotiations by building the decks and one-pagers sales used in the room. I wrote MRDs that translated customer needs into product specs, and built standardized campaign attribution dashboards. I also cleaned the transaction data behind a bundle pricing change that lifted revenue 25% at an 8.5% conversion rate.</p>
           </div>
         </article>
       </div>
@@ -464,5 +464,35 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+  (function () {
+    var strip = document.querySelector('.stats-strip');
+    if (!strip || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    var figures = strip.querySelectorAll('dd[data-count]');
+    function format(value, dd) {
+      var d = parseInt(dd.dataset.decimals || '0', 10);
+      var s = value.toFixed(d);
+      if (dd.dataset.commas) s = Number(s).toLocaleString('en-US');
+      return (dd.dataset.prefix || '') + s + (dd.dataset.suffix || '');
+    }
+    figures.forEach(function (dd) { dd.textContent = format(0, dd); });
+    function run() {
+      var t0 = null, dur = 1400;
+      function step(ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+        figures.forEach(function (dd) { dd.textContent = format(parseFloat(dd.dataset.count) * e, dd); });
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { run(); io.disconnect(); }
+    }, { threshold: 0.25 });
+    io.observe(strip);
+  })();
+  </script>
+
 </body>
 </html>
