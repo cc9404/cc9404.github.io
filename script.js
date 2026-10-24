@@ -122,7 +122,12 @@
   document.querySelectorAll('.exp-logo').forEach(function (wrap) {
     var img = wrap.querySelector('img');
     if (!img) return;
-    var mark = function () { wrap.classList.add('is-missing'); };
+    var fallback = wrap.querySelector('.logo-fallback');
+    var mark = function () {
+      wrap.classList.add('is-missing');
+      img.style.display = 'none';
+      if (fallback) fallback.hidden = false;
+    };
     img.addEventListener('error', mark);
     if (img.complete && img.naturalWidth === 0) mark();
   });
