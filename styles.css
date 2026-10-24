@@ -706,3 +706,30 @@ html.is-loading { overflow: hidden; }
   .exp-item.is-current::before { animation: none; }
   .now-dot::after { animation: none; opacity: 0; }
 }
+
+
+/* ---------- Company logos (left column) ---------- */
+.exp-logo {
+  position: relative;
+  margin-top: 18px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+.exp-logo img {
+  display: block;
+  max-width: 160px;
+  max-height: 64px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+.logo-fallback {
+  display: none;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 1.1rem;
+  color: #1A1A1A;
+}
+.exp-logo.is-missing img { display: none; }
+.exp-logo.is-missing .logo-fallback { display: block; }

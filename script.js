@@ -115,3 +115,15 @@
     });
   });
 })();
+
+
+// Company logos: if a logo file is missing, show the text name instead.
+(function () {
+  document.querySelectorAll('.exp-logo').forEach(function (wrap) {
+    var img = wrap.querySelector('img');
+    if (!img) return;
+    var mark = function () { wrap.classList.add('is-missing'); };
+    img.addEventListener('error', mark);
+    if (img.complete && img.naturalWidth === 0) mark();
+  });
+})();
