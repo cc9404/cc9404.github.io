@@ -184,9 +184,16 @@
   var brand = document.querySelector('.brand');
   var header = document.querySelector('.topbar');
   var pairs = [];
+  // Some nav links cover more than one area of the page. Projects covers both
+  // the category stickers (#projects) and the project groups below them (#selected).
+  var alsoCovers = { '#projects': ['#selected'] };
   document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (a) {
-    var el = document.getElementById(a.getAttribute('href').slice(1));
-    if (el) pairs.push({ link: a, el: el });
+    var href = a.getAttribute('href');
+    var targets = [href].concat(alsoCovers[href] || []);
+    targets.forEach(function (h) {
+      var el = document.querySelector(h);
+      if (el) pairs.push({ link: a, el: el });
+    });
   });
   var ticking = false;
 
@@ -205,9 +212,19 @@
     });
     if (window.pageYOffset < 40) current = null;
 
-    pairs.forEach(function (p) {
-      p.link.classList.toggle('active', p === current);
-    });
+    // At the very bottom of the page, the last section (Contact) is the one on screen,
+    // even when its top has not reached the reading line yet.
+    var atBottom = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4;
+    if (atBottom && pairs.length) {
+      for (var i = pairs.length - 1; i >= 0; i--) {
+        if (pairs[i].link.getAttribute('href') === '#contact') { current = pairs[i]; break; }
+      }
+    }
+
+    // Clear every link first, then mark the one that owns the current area.
+    // (A link can own two areas, so toggling per entry would let one undo the other.)
+    pairs.forEach(function (p) { p.link.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
     if (brand) brand.classList.toggle('is-current', current === null);
   }
 
