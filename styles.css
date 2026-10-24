@@ -638,3 +638,71 @@ html.is-loading { overflow: hidden; }
   .sticker, .sticker:hover { transition: none; transform: none; }
   .sticker.is-stamped { animation: none; }
 }
+
+/* Phone: keep section titles on one or two lines */
+@media (max-width: 600px) {
+  .section-head { flex-wrap: wrap; gap: 8px; align-items: baseline; }
+  .section-head h2 { font-size: 1.6rem; }
+  .section-head .tail { display: none; }
+  .project-actions { gap: 14px 20px; }
+}
+
+
+/* ---------- Current role ---------- */
+.exp-item.is-current {
+  position: relative;
+  border-top: 1px solid #1A1A1A;
+}
+.exp-item.is-current::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -1px;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(#57068C, #B58FD6);
+  transform-origin: top;
+  animation: current-line 1.2s var(--ease) both;
+}
+@keyframes current-line {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+.now-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #EADCF5;
+  color: #57068C;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.now-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #57068C;
+}
+.now-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #57068C;
+  opacity: 0;
+  animation: now-pulse 1.8s ease-out infinite;
+}
+@keyframes now-pulse {
+  0% { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .exp-item.is-current::before { animation: none; }
+  .now-dot::after { animation: none; opacity: 0; }
+}
