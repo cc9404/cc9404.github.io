@@ -649,25 +649,6 @@ html.is-loading { overflow: hidden; }
 
 
 /* ---------- Current role ---------- */
-.exp-item.is-current {
-  position: relative;
-  border-top: 1px solid #1A1A1A;
-}
-.exp-item.is-current::before {
-  content: "";
-  position: absolute;
-  left: -2px;
-  top: -1px;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(#57068C, #B58FD6);
-  transform-origin: top;
-  animation: current-line 1.2s var(--ease) both;
-}
-@keyframes current-line {
-  from { transform: scaleY(0); }
-  to { transform: scaleY(1); }
-}
 .now-badge {
   display: inline-flex;
   align-items: center;
@@ -703,8 +684,7 @@ html.is-loading { overflow: hidden; }
   100% { transform: scale(1.8); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .exp-item.is-current::before { animation: none; }
-  .now-dot::after { animation: none; opacity: 0; }
+    .now-dot::after { animation: none; opacity: 0; }
 }
 
 
@@ -733,3 +713,67 @@ html.is-loading { overflow: hidden; }
 }
 .exp-logo.is-missing img { display: none; }
 .exp-logo.is-missing .logo-fallback { display: block; }
+
+
+/* ---------- Experience layout, refined ---------- */
+.exp-item {
+  grid-template-columns: 240px 1fr;
+  gap: 56px;
+  padding: 44px 0;
+  border-top: 1px solid #E4DDEC;
+}
+.exp-item:first-of-type { border-top: 1px solid #1A1A1A; }
+.exp-meta .exp-date {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+}
+.exp-place { font-size: 0.9rem; color: #5A5566; margin-top: 6px; }
+.exp-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 22px;
+  min-height: 88px;
+  text-decoration: none;
+  color: #1A1A1A;
+}
+.exp-logo img {
+  display: block;
+  max-width: 200px;
+  max-height: 88px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  transition: opacity 0.25s var(--ease);
+}
+.exp-logo:hover img { opacity: 0.75; }
+.exp-logo:focus-visible { outline: 2px solid #57068C; outline-offset: 4px; }
+.exp-body h3 {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.exp-role {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #57068C;
+  margin-bottom: 22px;
+}
+.exp-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #3A3545;
+  max-width: 62ch;
+}
+.exp-body ul { display: none; }
+@media (max-width: 860px) {
+  .exp-item { grid-template-columns: 1fr; gap: 16px; }
+}
