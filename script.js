@@ -103,18 +103,6 @@
 })();
 
 
-// Category stickers: a short stamp on click, then the normal anchor scroll.
-(function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('[data-stamp]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      if (reduce) return;
-      el.classList.remove('is-stamped');
-      void el.offsetWidth; // restart the animation
-      el.classList.add('is-stamped');
-    });
-  });
-})();
 
 
 // Company logos: if a logo file is missing, show the text name instead.
@@ -130,5 +118,50 @@
     };
     img.addEventListener('error', mark);
     if (img.complete && img.naturalWidth === 0) mark();
+  });
+})();
+
+
+// Always open the page at the top, including when returning to it.
+(function () {
+  function toTop() {
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  document.addEventListener('DOMContentLoaded', toTop);
+  window.addEventListener('load', function () { toTop(); setTimeout(toTop, 60); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) toTop(); });
+})();
+
+// Category cards: tilt toward the cursor, glare follows it, and the card lifts.
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (reduce || !finePointer) return;
+
+  document.querySelectorAll('.sticker').forEach(function (card) {
+    card.addEventListener('pointerenter', function () {
+      card.classList.add('is-active');
+    });
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--ry', ((px - 0.5) * 14).toFixed(2) + 'deg');
+      card.style.setProperty('--rx', ((0.5 - py) * 10).toFixed(2) + 'deg');
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+    });
+    card.addEventListener('pointerleave', function () {
+      card.classList.remove('is-active');
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+    });
+    card.addEventListener('click', function () {
+      card.classList.remove('is-stamped');
+      void card.offsetWidth;
+      card.classList.add('is-stamped');
+    });
   });
 })();

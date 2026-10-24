@@ -488,22 +488,8 @@ html.is-loading { overflow: hidden; }
   border-radius: 6px;
   color: #1A1A1A;
   text-decoration: none;
-  transform: rotate(-1.4deg);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
-}
-.sticker:nth-child(2) { transform: rotate(0.9deg); }
-.sticker:nth-child(3) { transform: rotate(-0.7deg); }
-.sticker:hover {
-  transform: rotate(0deg) translateY(-6px) scale(1.02);
-  box-shadow: 0 18px 32px -20px rgba(87, 6, 140, 0.45);
 }
 .sticker:focus-visible { outline: 2px solid #57068C; outline-offset: 4px; }
-.sticker.is-stamped { animation: stamp 0.4s var(--ease); }
-@keyframes stamp {
-  0% { transform: rotate(0deg) scale(1); }
-  40% { transform: rotate(0deg) scale(0.94); }
-  100% { transform: rotate(0deg) scale(1); }
-}
 .sticker-count {
   font-size: 0.66rem;
   font-weight: 600;
@@ -817,4 +803,66 @@ html.is-loading { overflow: hidden; }
 }
 @media (max-width: 600px) {
   .stats-strip dd { font-size: 1.8rem; }
+}
+
+
+/* ---------- Category cards: interactive ---------- */
+.sticker {
+  --rot: -1.4deg;
+  --rx: 0deg;
+  --ry: 0deg;
+  --lift: 0px;
+  --s: 1;
+  --mx: 50%;
+  --my: 50%;
+  rotate: var(--rot);
+  translate: 0 var(--lift);
+  scale: var(--s);
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.25s var(--ease), rotate 0.4s var(--ease), translate 0.4s var(--ease),
+              scale 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+  will-change: transform;
+  overflow: hidden;
+}
+.sticker:nth-child(1) { --rot: -1.6deg; }
+.sticker:nth-child(2) { --rot: 0.9deg; }
+.sticker:nth-child(3) { --rot: -0.7deg; }
+
+/* Glare that follows the cursor */
+.sticker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mx) var(--my), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 55%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.35s var(--ease);
+}
+.sticker.is-active {
+  --rot: 0deg;
+  --lift: -8px;
+  --s: 1.03;
+  border-color: #57068C;
+  box-shadow: 0 22px 40px -22px rgba(87, 6, 140, 0.55);
+}
+.sticker.is-active::after { opacity: 1; }
+.sticker.is-active .sticker-note { translate: 8px 0; }
+.sticker > * { position: relative; z-index: 1; }
+.sticker-note { transition: translate 0.4s var(--ease); }
+
+/* Stamp on click uses the scale property, so it does not fight the tilt */
+.sticker.is-stamped { animation: stamp-scale 0.4s var(--ease); }
+@keyframes stamp-scale {
+  0% { scale: var(--s); }
+  40% { scale: 0.94; }
+  100% { scale: var(--s); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker, .sticker.is-active { transition: none; transform: none; }
+  .sticker::after { display: none; }
+  .sticker.is-stamped { animation: none; }
 }
