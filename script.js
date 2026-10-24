@@ -59,7 +59,7 @@
   document.documentElement.classList.add('js');
 
   var targets = document.querySelectorAll(
-    '.section-head, .project, .skill-card, .edu-card, .exp-item, .footer-inner > *'
+    '.section-head, .project, .feature, .skill-card, .edu-card, .exp-item, .footer-inner > *'
   );
   targets.forEach(function (el) { el.classList.add('reveal'); });
 
@@ -242,4 +242,22 @@
   document.addEventListener('DOMContentLoaded', update);
   window.addEventListener('load', function () { update(); setTimeout(update, 80); });
   update();
+})();
+
+
+// Feature rows: expand or collapse "The full story".
+(function () {
+  document.querySelectorAll('.feature-toggle').forEach(function (btn) {
+    var story = btn.parentElement.querySelector('.feature-story');
+    if (!story) return;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      if (open) {
+        story.hidden = true;
+      } else {
+        story.hidden = false;
+      }
+    });
+  });
 })();
