@@ -777,3 +777,44 @@ html.is-loading { overflow: hidden; }
 @media (max-width: 860px) {
   .exp-item { grid-template-columns: 1fr; gap: 16px; }
 }
+
+
+/* ---------- Stats strip: five aligned figures ---------- */
+.stats-strip {
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 72px;
+}
+.stats-strip > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px 14px;
+  transition: background 0.35s var(--ease);
+}
+.stats-strip > div:hover { background: #EFE8F7; }
+.stats-strip dd {
+  font-variant-numeric: tabular-nums;
+  font-size: 2.1rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.stats-strip dt {
+  min-height: 2.6em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+@media (max-width: 860px) {
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .stats-strip > div:nth-child(n) { border-left: 0; border-top: 1px solid #E4DDEC; }
+  .stats-strip > div:nth-child(odd) { border-right: 1px solid #E4DDEC; }
+  .stats-strip > div:nth-child(-n+2) { border-top: 0; }
+  .stats-strip > div:last-child { grid-column: span 2; border-right: 0; }
+}
+@media (max-width: 600px) {
+  .stats-strip dd { font-size: 1.8rem; }
+}

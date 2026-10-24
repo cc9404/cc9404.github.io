@@ -132,3 +132,46 @@
     if (img.complete && img.naturalWidth === 0) mark();
   });
 })();
+
+
+// Stats strip: count the numbers up once, when the strip scrolls into view.
+(function () {
+  var strip = document.querySelector('.stats-strip');
+  if (!strip) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var figures = strip.querySelectorAll('dd[data-count]');
+
+  function format(value, dd) {
+    var decimals = parseInt(dd.dataset.decimals || '0', 10);
+    var str = value.toFixed(decimals);
+    if (dd.dataset.commas) str = Number(str).toLocaleString('en-US');
+    return (dd.dataset.prefix || '') + str + (dd.dataset.suffix || '');
+  }
+
+  function run() {
+    var duration = 1400;
+    var t0 = null;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min((ts - t0) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      figures.forEach(function (dd) {
+        dd.textContent = format(parseFloat(dd.dataset.count) * eased, dd);
+      });
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+  figures.forEach(function (dd) {
+    dd.textContent = format(0, dd);
+  });
+  var io = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) {
+      run();
+      io.disconnect();
+    }
+  }, { threshold: 0.4 });
+  io.observe(strip);
+})();
