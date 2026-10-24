@@ -934,3 +934,31 @@ html.is-loading { overflow: hidden; }
   line-height: 1.55;
   color: #3A3545;
 }
+
+
+/* ---------- Nav typeface and brand underline ---------- */
+.nav-links a {
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.brand {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+.brand::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #57068C;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.brand:hover::after,
+.brand.is-current::after { transform: scaleX(1); }

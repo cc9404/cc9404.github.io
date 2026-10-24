@@ -21,29 +21,7 @@
       }
     });
   });
-
-  // Highlight the nav link for the section in view.
-  var links = document.querySelectorAll('.nav-links a[href^="#"]');
-  var sections = [];
-  links.forEach(function (link) {
-    var target = document.querySelector(link.getAttribute('href'));
-    if (target) sections.push({ link: link, target: target });
-  });
-
-  if ('IntersectionObserver' in window && sections.length) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting || window.__navLock) return;
-        sections.forEach(function (s) {
-          s.link.classList.toggle('active', s.target === entry.target);
-        });
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-
-    sections.forEach(function (s) { observer.observe(s.target); });
-  }
 })();
-
 
 // Page loader: keep it visible through the 1.2s check animation,
 // then fade it out once the page has finished loading.
@@ -191,7 +169,56 @@
       window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
       history.replaceState(null, '', '#' + id);
 
-      timer = setTimeout(function () { window.__navLock = false; }, 700);
+      timer = setTimeout(function () {
+        window.__navLock = false;
+        if (window.__navSync) window.__navSync();
+      }, 700);
     });
   });
+})();
+
+
+// Highlight state: the nav link for the section in view, or the brand name at the top.
+// Recomputed from the real scroll position, so returning to the top always restores it.
+(function () {
+  var brand = document.querySelector('.brand');
+  var header = document.querySelector('.topbar');
+  var pairs = [];
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) pairs.push({ link: a, el: el });
+  });
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    if (window.__navLock) return;
+    var headerH = header ? header.offsetHeight : 0;
+    var line = headerH + 140;
+    var current = null;
+    pairs.forEach(function (p) {
+      if (p.el.getBoundingClientRect().top <= line) current = p;
+    });
+    if (window.pageYOffset < 40) current = null;
+
+    pairs.forEach(function (p) {
+      p.link.classList.toggle('active', p === current);
+    });
+    if (brand) brand.classList.toggle('is-current', current === null);
+  }
+
+  function request() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  window.__navSync = update;
+  window.addEventListener('scroll', request, { passive: true });
+  window.addEventListener('resize', request);
+  window.addEventListener('pageshow', update);
+  document.addEventListener('DOMContentLoaded', update);
+  window.addEventListener('load', function () { update(); setTimeout(update, 80); });
+  update();
 })();
