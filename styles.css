@@ -1193,3 +1193,22 @@ html.is-loading { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .stack-card, .feature-toggle .plus { transition: none; }
 }
+
+
+/* ---------- One heading size everywhere: matches "Marketing analytics & SQL" ---------- */
+.section-head h2,
+.cat-head h2 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  letter-spacing: -0.015em;
+}
+@media (max-width: 600px) {
+  .section-head h2,
+  .cat-head h2 { font-size: 2.2rem; }
+}
+
+
+/* ---------- Category cards sit clearly below the title rule ---------- */
+#projects .stickers {
+  margin-top: 72px;
+  padding-top: 12px;
+}
