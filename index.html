@@ -105,6 +105,15 @@
     .footer .copy { margin-top: 56px; font-size: .78rem; color: #8A8394; }
     @media (max-width: 860px) { .footer-inner .ft-grid { grid-template-columns: 1fr; gap: 36px; } .ft-links a { grid-template-columns: 80px 1fr 20px; } }
   </style>
+
+  <style id="ow-css">
+    .hp-caption { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .ow-pill { display: inline-flex; align-items: center; gap: 9px; font-family: 'Archivo', system-ui, sans-serif; font-size: .64rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #57068C; background: #EADCF5; border: 1px solid #D9C4F0; padding: 7px 13px 7px 11px; border-radius: 999px; line-height: 1; }
+    .ow-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #16A34A; flex: 0 0 auto; }
+    .ow-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #16A34A; opacity: 0; animation: ow-pulse 2s ease-out infinite; }
+    @keyframes ow-pulse { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(1.9); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .ow-dot::after { animation: none; opacity: 0; } }
+  </style>
 </head>
 <body>
 
@@ -168,7 +177,7 @@
                 <img src="assets/photo.jpg?v=2" alt="Portrait of Ethan Chou" style="object-position:50% 30%;transform:scale(1.32);transform-origin:50% 38%;" />
               </div>
             </div>
-            <figcaption>NYU, class of 2027</figcaption>
+            <figcaption class="hp-caption"><span class="hp-note">NYU, class of 2027</span><span class="ow-pill"><span class="ow-dot" aria-hidden="true"></span>Open to work</span></figcaption>
           </figure>
         </div>
       </div>
