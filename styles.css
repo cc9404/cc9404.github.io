@@ -1220,3 +1220,39 @@ html.is-loading { overflow: hidden; }
   font-style: normal;
   font-weight: 300;
 }
+
+/* ---------- Feature images: linked to GitHub, with a hover hint ---------- */
+.feature-img-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.feature-img-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.feature-img-link::after {
+  content: "View repo on GitHub ↗";
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #57068C;
+  padding: 7px 12px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+  pointer-events: none;
+}
+.feature-media:hover .feature-img-link::after {
+  opacity: 1;
+  transform: translateY(0);
+}
