@@ -1212,3 +1212,11 @@ html.is-loading { overflow: hidden; }
   margin-top: 72px;
   padding-top: 12px;
 }
+
+
+/* ---------- Plain ampersand in headings ---------- */
+.amp {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: inherit;
+}
