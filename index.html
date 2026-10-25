@@ -201,12 +201,12 @@
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
-                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/telco_retention_and_churn_analytics" target="_blank" rel="noopener" aria-label="Telco retention curve preview, open on GitHub"><img src="assets/project-telco.png" alt="Telco retention curve preview" /></a></div>
+                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/telco_retention_and_churn_analytics" target="_blank" rel="noopener" aria-label="Telco retention curve preview, open on GitHub"><img src="assets/project-telco.png?v=2" alt="Telco retention curve preview" /></a></div>
               </div>
             </div>
             <div class="feature-body">
               <p class="feature-kicker">Feature 01 · Marketing analytics</p>
-              <h3>Telco Customer Retention &amp; Churn Analytics</h3>
+              <h3>Telco Customer Retention <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> Churn Analytics</h3>
               <p class="feature-goal"><strong>Goal:</strong> find which customers churn, when they churn, and where a retention plan should step in.</p>
               <ul class="feature-points"><li>Analyzed 7,043 telecom accounts with SQL.</li><li>Surfaced a 55.2% churn cliff in the first six months.</li><li>Showed that bundle strategies can push churn below 15%.</li></ul>
               <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
@@ -220,7 +220,7 @@
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
-                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/sql_analysis_ethan_chou" target="_blank" rel="noopener" aria-label="E-commerce funnel preview, open on GitHub"><img src="assets/project-ecommerce.png" alt="E-commerce funnel preview" /></a></div>
+                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/sql_analysis_ethan_chou" target="_blank" rel="noopener" aria-label="E-commerce funnel preview, open on GitHub"><img src="assets/project-ecommerce.png?v=2" alt="E-commerce funnel preview" /></a></div>
               </div>
             </div>
             <div class="feature-body">
@@ -239,12 +239,12 @@
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
-                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/market_segmentation_portfolio" target="_blank" rel="noopener" aria-label="RFM customer segments preview, open on GitHub"><img src="assets/project-rfm.png" alt="RFM customer segments preview" /></a></div>
+                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/market_segmentation_portfolio" target="_blank" rel="noopener" aria-label="RFM customer segments preview, open on GitHub"><img src="assets/project-rfm.png?v=2" alt="RFM customer segments preview" /></a></div>
               </div>
             </div>
             <div class="feature-body">
               <p class="feature-kicker">Feature 03 · Marketing analytics</p>
-              <h3>Customer Segmentation &amp; RFM Scoring</h3>
+              <h3>Customer Segmentation <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> RFM Scoring</h3>
               <p class="feature-goal"><strong>Goal:</strong> split customers into groups that each need a different retention strategy.</p>
               <ul class="feature-points"><li>Quartile-based RFM scoring on recency, frequency, and monetary value.</li><li>K-Means clustering to surface high-value cohorts.</li></ul>
               <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
@@ -258,7 +258,7 @@
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
-                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/market_basket_analysis_portfolio" target="_blank" rel="noopener" aria-label="Market basket association network preview, open on GitHub"><img src="assets/project-basket.png" alt="Market basket association network preview" /></a></div>
+                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/market_basket_analysis_portfolio" target="_blank" rel="noopener" aria-label="Market basket association network preview, open on GitHub"><img src="assets/project-basket.png?v=2" alt="Market basket association network preview" /></a></div>
               </div>
             </div>
             <div class="feature-body">
@@ -267,8 +267,16 @@
               <p class="feature-goal"><strong>Goal:</strong> find which products customers buy together, and use those pairings to design bundles and cross-sell offers.</p>
               <ul class="feature-points"><li>Apriori association rules on 380 French transaction baskets covering 1,541 products.</li><li>Filtered for lift of at least 2.0 and confidence of at least 60%.</li><li>Recommended partyware bundles, tiered collector pricing, and checkout cross-sells.</li></ul>
               <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
-              <div class="feature-story" hidden><p>The network graph separates the catalog into distinct communities, such as partyware, alarm clocks, and children's cutlery. The lift heatmap shows strong co-purchase within each community, which points to bundles inside the group and cross-sells between them.</p></div>
-              <div class="p-tags"><span class="tag">Apriori</span><span class="tag">Association rules</span><span class="tag">Cross-selling</span><span class="tag">NetworkX</span></div>
+              <div class="feature-story" hidden>
+                <ul class="story-list">
+                  <li>Cleaned 541K+ raw transactions down to 380 French baskets covering 1,541 products, removing cancellations, postage fees, and non-merchandise codes.</li>
+                  <li>Mined association rules with the Apriori algorithm, keeping only pairs with lift of at least 2.0 and confidence of at least 60%.</li>
+                  <li>The network graph separates the catalog into communities: partyware (paper cups, plates, napkins), retro alarm clocks, children's cutlery, and skull-themed tableware.</li>
+                  <li>The lift heatmap shows strong co-purchase inside each community, such as lift of 12.57 for children's cutlery and 13.82 for skull tableware. Alarm clocks bought across colors still show lift above 7.2, which points to collectors building a set rather than swapping one color for another.</li>
+                  <li>Recommendations: a "Picnic Essentials Kit" with a 10% to 12% bundle discount, tiered pricing on alarm clocks ("Buy 2, Get 15% Off"), a checkout cross-sell for cutlery, and co-locating associated products in adjacent warehouse aisles.</li>
+                </ul>
+              </div>
+              <div class="p-tags"><span class="tag">Apriori</span><span class="tag">Association rules</span><span class="tag">Cross-selling</span><span class="tag">Network graph</span></div>
               <a class="feature-link" href="https://github.com/cc9404/market_basket_analysis_portfolio" target="_blank" rel="noopener">View GitHub repo →</a>
             </div>
           </article>

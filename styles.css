@@ -1256,3 +1256,25 @@ html.is-loading { overflow: hidden; }
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* ---------- Full story lists ---------- */
+.story-list { display: grid; gap: 12px; padding: 0; margin: 0; }
+.story-list li {
+  position: relative;
+  padding-left: 22px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #3A3545;
+}
+.story-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #57068C;
+}
