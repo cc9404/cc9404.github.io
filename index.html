@@ -26,6 +26,39 @@
     .deck-dots .dot.is-on { background: #57068C; box-shadow: 0 0 0 1px #fff; }
     @media (max-width: 860px) { .deck { max-width: 100%; } }
   </style>
+
+  <style id="kit-edu-css">
+    .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .edu-card { background: #FBF8F2; border: 1px solid #1A1A1A; border-radius: 14px; padding: 30px 28px 32px; display: flex; flex-direction: column; transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+    .edu-card:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -26px rgba(87,6,140,.5); }
+    .edu-logo { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #fff; border: 1px solid #E4DDEC; display: grid; place-items: center; margin-bottom: 22px; }
+    .edu-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .edu-date { font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #57068C; }
+    .edu-card h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 1.45rem; line-height: 1.2; margin: 10px 0 12px; }
+    .edu-degree { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #3A3545; line-height: 1.6; }
+    .edu-note { font-family: 'Newsreader', Georgia, serif; font-size: 1.02rem; line-height: 1.65; color: #3A3545; margin-top: 14px; }
+    @media (max-width: 900px) { .edu-grid { grid-template-columns: 1fr; } }
+
+    .kit { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+    .kit-tabs { display: grid; gap: 6px; }
+    .kit-tab { position: relative; display: flex; align-items: baseline; gap: 16px; text-align: left; background: none; border: 0; border-bottom: 1px solid #E4DDEC; padding: 18px 6px 18px 0; cursor: pointer; font: inherit; color: #8A8394; transition: color .4s, padding .5s cubic-bezier(.2,.7,.2,1); }
+    .kit-tab::before { content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: #57068C; transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .kit-tab:hover { color: #1A1A1A; }
+    .kit-tab.is-on { color: #1A1A1A; padding-left: 14px; }
+    .kit-tab.is-on::before { transform: scaleX(1); }
+    .kit-no { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1rem; color: #57068C; }
+    .kit-name { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 1.45rem; letter-spacing: -.01em; }
+    .kit-stage { position: relative; min-height: 240px; }
+    .kit-panel { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity .6s, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .kit-panel.is-on { opacity: 1; transform: none; pointer-events: auto; }
+    .kit-chips { display: flex; flex-wrap: wrap; gap: 12px; }
+    .kit-chip { font-family: 'Newsreader', Georgia, serif; font-size: 1.14rem; padding: 12px 20px; border-radius: 999px; background: #FFFFFF; border: 1px solid #D9C4F0; color: #1A1A1A; opacity: 0; transform: translateY(10px) scale(.96); }
+    .kit-panel.is-on .kit-chip { animation: kit-in .6s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--i) * 70ms + 120ms); }
+    .kit-chip:hover { background: #57068C; color: #fff; border-color: #57068C; transform: translateY(-3px) scale(1.03); transition: transform .35s, background .35s, color .35s; }
+    @keyframes kit-in { to { opacity: 1; transform: none; } }
+    @media (max-width: 860px) { .kit { grid-template-columns: 1fr; gap: 28px; } .kit-stage { min-height: 300px; } }
+    @media (prefers-reduced-motion: reduce) { .kit-panel, .kit-chip, .kit-tab::before { transition: none; animation: none; opacity: 1; transform: none; } }
+  </style>
 </head>
 <body>
 
@@ -86,7 +119,7 @@
           <figure class="hero-photo rise r2">
             <div class="arch-wrap">
               <div class="arch">
-                <img src="assets/photo.jpg" alt="Portrait of Ethan Chou" />
+                <img src="assets/photo.jpg?v=2" alt="Portrait of Ethan Chou" style="object-position:50% 30%;transform:scale(1.32);transform-origin:50% 38%;" />
               </div>
             </div>
             <figcaption>NYU, class of 2027</figcaption>
@@ -417,21 +450,30 @@
       <div class="wrap">
         <header class="section-head">
           <h2 style="font-size:clamp(2.2rem,4vw,3rem);"><span class="sec-no">No. 03</span> Education</h2>
-          <span class="tail">New York · Kaohsiung</span>
+          <span class="tail">New York · Seoul · Kaohsiung</span>
         </header>
         <p class="section-sub">A language foundation, now trained in marketing analytics at NYU.</p>
 
         <div class="edu-grid">
-          <article class="edu-card reveal">
-            <p class="edu-date">2025 to 2027</p>
+          <article class="edu-card">
+            <div class="edu-logo"><img src="assets/logo-nyu.jpg" alt="New York University logo" /></div>
+            <p class="edu-date">Expected May 2027</p>
             <h3>New York University</h3>
             <p class="edu-degree">M.S. Integrated Marketing (Marketing Analytics) · GPA 3.92</p>
-            <p class="edu-note">Coursework: Business Analytics &amp; Data Visualization, Web Analytics (Attribution &amp; Clickstream), Advanced Test &amp; Experimental Design, Predictive Modeling.</p>
+            <p class="edu-note">Coursework in business analytics and data visualization, web analytics (attribution and clickstream), advanced test and experimental design, and predictive modeling.</p>
           </article>
-          <article class="edu-card reveal">
+          <article class="edu-card">
+            <div class="edu-logo"><img src="assets/logo-wenzao.jpg" alt="Wenzao Ursuline University of Languages logo" /></div>
             <p class="edu-date">2022</p>
             <h3>Wenzao Ursuline University of Languages</h3>
             <p class="edu-degree">B.A. English · Kaohsiung, Taiwan</p>
+          </article>
+          <article class="edu-card">
+            <div class="edu-logo"><img src="assets/logo-cuk.jpg" alt="The Catholic University of Korea logo" /></div>
+            <p class="edu-date">Aug. – Dec. 2020</p>
+            <h3>The Catholic University of Korea</h3>
+            <p class="edu-degree">Exchange Program · Division of Foreign Language &amp; Literature · GPA 4.17 / 4.5</p>
+            <p class="edu-note">Seoul, South Korea.</p>
           </article>
         </div>
       </div>
@@ -446,43 +488,9 @@
         </header>
         <p class="section-sub">The analytics tools and languages I work in every day.</p>
 
-        <div class="skills-grid">
-          <div class="skill-card reveal">
-            <h3>Marketing</h3>
-            <div class="p-tags">
-              <span class="tag">B2B marketing</span>
-              <span class="tag">Campaign reports</span>
-              <span class="tag">Stakeholder presentations</span>
-              <span class="tag">Audience segmentation</span>
-            </div>
-          </div>
-          <div class="skill-card reveal">
-            <h3>Data <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> analytics</h3>
-            <div class="p-tags">
-              <span class="tag">SQL</span>
-              <span class="tag">Tableau</span>
-              <span class="tag">GA4</span>
-              <span class="tag">A/B testing</span>
-              <span class="tag">UTM attribution</span>
-              <span class="tag">Funnel analysis</span>
-              <span class="tag">KPI reporting</span>
-            </div>
-          </div>
-          <div class="skill-card reveal">
-            <h3>Languages</h3>
-            <div class="p-tags">
-              <span class="tag">Mandarin (native)</span>
-              <span class="tag">English (fluent)</span>
-            </div>
-          </div>
-          <div class="skill-card reveal">
-            <h3>Certifications</h3>
-            <ul class="cert-list">
-              <li>Google Ads Search (2026)</li>
-              <li>HubSpot Marketing Hub Software (2026)</li>
-              <li>Generative AI for Marketing with Microsoft 365 Copilot (2025)</li>
-            </ul>
-          </div>
+        <div class="kit" data-kit>
+          <nav class="kit-tabs" aria-label="Toolkit categories"><button class="kit-tab is-on" type="button" data-kit-tab="0"><span class="kit-no">01</span><span class="kit-name">Marketing</span></button><button class="kit-tab" type="button" data-kit-tab="1"><span class="kit-no">02</span><span class="kit-name">Data &amp; analytics</span></button><button class="kit-tab" type="button" data-kit-tab="2"><span class="kit-no">03</span><span class="kit-name">Languages</span></button><button class="kit-tab" type="button" data-kit-tab="3"><span class="kit-no">04</span><span class="kit-name">Certifications</span></button></nav>
+          <div class="kit-stage"><div class="kit-panel is-on" data-kit-panel="0"><div class="kit-chips"><span class="kit-chip" style="--i:0">B2B marketing</span><span class="kit-chip" style="--i:1">Campaign reports</span><span class="kit-chip" style="--i:2">Stakeholder presentations</span><span class="kit-chip" style="--i:3">Audience segmentation</span></div></div><div class="kit-panel" data-kit-panel="1"><div class="kit-chips"><span class="kit-chip" style="--i:0">SQL</span><span class="kit-chip" style="--i:1">Tableau</span><span class="kit-chip" style="--i:2">GA4</span><span class="kit-chip" style="--i:3">A/B testing</span><span class="kit-chip" style="--i:4">UTM attribution</span><span class="kit-chip" style="--i:5">Funnel analysis</span><span class="kit-chip" style="--i:6">KPI reporting</span></div></div><div class="kit-panel" data-kit-panel="2"><div class="kit-chips"><span class="kit-chip" style="--i:0">Mandarin (native)</span><span class="kit-chip" style="--i:1">English (fluent)</span></div></div><div class="kit-panel" data-kit-panel="3"><div class="kit-chips"><span class="kit-chip" style="--i:0">Google Ads Search (2026)</span><span class="kit-chip" style="--i:1">HubSpot Marketing Hub (2026)</span><span class="kit-chip" style="--i:2">Generative AI for Marketing with Microsoft 365 Copilot (2025)</span></div></div></div>
         </div>
       </div>
     </section>
@@ -554,6 +562,31 @@
       if (!reduce) {
         setInterval(function () { if (!paused) show((current + 1) % slides.length); }, 3800);
       }
+    });
+  })();
+  </script>
+
+  <script>
+  (function () {
+    var root = document.querySelector('[data-kit]');
+    if (!root) return;
+    var tabs = root.querySelectorAll('[data-kit-tab]');
+    var panels = root.querySelectorAll('[data-kit-panel]');
+    function show(i) {
+      tabs.forEach(function (t, k) { t.classList.toggle('is-on', k === i); });
+      panels.forEach(function (p, k) {
+        var on = k === i;
+        p.classList.toggle('is-on', on);
+        if (on) {
+          // restart the chip animation for the newly shown panel
+          p.querySelectorAll('.kit-chip').forEach(function (c) { c.style.animation = 'none'; void c.offsetWidth; c.style.animation = ''; });
+        }
+      });
+    }
+    tabs.forEach(function (t, k) {
+      t.addEventListener('mouseenter', function () { show(k); });
+      t.addEventListener('focus', function () { show(k); });
+      t.addEventListener('click', function () { show(k); });
     });
   })();
   </script>
