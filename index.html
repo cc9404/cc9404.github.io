@@ -26,6 +26,19 @@
     .deck-dots .dot.is-on { background: #57068C; box-shadow: 0 0 0 1px #fff; }
     @media (max-width: 860px) { .deck { max-width: 100%; } }
   </style>
+
+  <style id="acc-css">
+    .acc { display: flex; gap: 10px; height: 400px; width: 100%; }
+    .acc-panel { flex: 1 1 0; margin: 0; position: relative; overflow: hidden; border: 1px solid #1A1A1A; border-radius: 12px; background: #1E1A2E; cursor: pointer; transition: flex .9s cubic-bezier(.2,.7,.2,1), box-shadow .9s; box-shadow: 0 24px 50px -30px rgba(87,6,140,.55); }
+    .acc-panel img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.12); transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+    .acc-panel.is-open { flex: 3.2 1 0; }
+    .acc-panel.is-open img { transform: scale(1); }
+    .acc-panel figcaption { position: absolute; left: 14px; bottom: 14px; font-size: .66rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(26,26,26,.72); padding: 7px 12px; border-radius: 999px; white-space: nowrap; }
+    .acc-panel:not(.is-open) figcaption { background: #57068C; }
+    .acc-panel:focus-visible { outline: 2px solid #57068C; outline-offset: 4px; }
+    @media (max-width: 860px) { .acc { height: 300px; } }
+    @media (prefers-reduced-motion: reduce) { .acc-panel, .acc-panel img { transition: none; } }
+  </style>
 </head>
 <body>
 
@@ -337,26 +350,32 @@
               <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
               <div class="feature-story" hidden><ul class="story-list"><li>The plan has three strategies. Strategy 1, emerging markets in India and the GCC, adds $4.0B in revenue and $720M in net income. Strategy 2, the LVMH Multi-Sensory Art Studio in the EU and US, adds $3.5B and $700M. Strategy 3, in-maison brand collaborations, adds $492M and $73.7M.</li><li>The market case: India's luxury demand is projected to grow 3.5x by 2030, with 27 global brands entering India in the last two years. The GCC luxury market is $16.93B (2024) and is growing at a 10.15% CAGR through 2030, with more than half of its affluent buyers under 30.</li><li>Execution: 8 flagships across Saudi Arabia, UAE, and Qatar/Kuwait, plus 8 in India, rolled out in phases, with Phase 2 scaling only on KPIs. The plan also aims to bring GCC spending that now goes to LVMH in Europe back home.</li><li>Financials for Strategy 1: estimated sales of $4.00B, a 67% gross margin, and an 18% net margin. The payback case shows a 1-year-6-month payback and a 22% ROI on a $965M investment.</li><li>Competition: in India, Estée Lauder is partnering with designer Sabyasachi and plans local manufacturing. In the GCC, Chanel, Hermès, Richemont, and Kering are expanding with new boutiques. LVMH's edge is its Multi-Maison portfolio and flagship clusters, which help it secure prime sites.</li></ul></div>
               <div class="p-tags"><span class="tag">Strategy</span><span class="tag">Luxury</span><span class="tag">Board presentation</span><span class="tag">Multi-sensory</span></div>
-              <a class="feature-link" href="#" target="_blank" rel="noopener">Read the full plan →</a>
+              <a class="feature-link" href="https://drive.google.com/file/d/1tJBQ0XVOrdpil7DyZeQy3umxLefNyNLG/view?usp=sharing" target="_blank" rel="noopener">Read the full plan →</a>
             </div>
           </article>
 
           <article class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
-              <div class="stack">
-                <div class="stack-card back"><div class="ph ph-b"><span>Strategy deck</span></div></div>
-                <div class="stack-card front"><div class="ph ph-f"><span>Slide placeholder</span></div></div>
+              <div class="acc" data-acc>
+                <figure class="acc-panel is-open">
+                  <img src="assets/rxbar-cover.png?v=1" alt="RX Bar Growth Strategy cover slide" />
+                  <figcaption>Cover</figcaption>
+                </figure>
+                <figure class="acc-panel">
+                  <img src="assets/rxbar-landscape.png?v=1" alt="RX Bar competitive landscape slide" />
+                  <figcaption>Competitive landscape</figcaption>
+                </figure>
               </div>
             </div>
             <div class="feature-body">
-              <p class="feature-kicker">Individual · Competitive strategy</p>
+              <p class="feature-kicker">Team project · Competitive strategy</p>
               <h3>RX Bar Growth Strategy</h3>
               <p class="feature-goal"><strong>Goal:</strong> defend RXBAR in a category where clean-label is no longer enough to win, and find the next growth segments.</p>
               <ul class="feature-points"><li>Protect, Extend, and Explore: defend the core, reach women's health and children's nutrition, then lead the functional snacking shift.</li><li>Three growth segments for the next three to five years, each with its own way to win.</li><li>A five-year roadmap that moves RXBAR from a clean-label snack brand into a broader functional wellness platform.</li></ul>
               <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
-              <div class="feature-story" hidden><ul class="story-list"><li>Where RXBAR competes: the protein bar and better-for-you snack bar categories. Core consumers are fitness-oriented people and clean-label seekers. The brand is sold through Whole Foods, Target, Costco, gyms, and e-commerce.</li><li>The problem: transparency is now table stakes. KIND and Clif Bar have improved ingredient messaging and reduced sugar, so clean-label no longer sets RXBAR apart. Big brands compete on scale and taste, and small brands compete on specialization and function.</li><li>Protect: defend the core active-consumer and clean-label base.</li><li>Extend: reach women's health (iron, collagen, hormonal health) and children's nutrition, where RX Kids is already launched and parents want clean-label, low-sugar snacks.</li><li>Explore: lead the functional snacking shift with new product lines that use real ingredients, such as adaptogens and nootropics, on the clean-label platform.</li><li>Winning position: other brands are indulgent (taste-first), performance (function-first), or functional but complex. RXBAR owns the space between simple and functional.</li><li>Roadmap: Year 1 to 2 protect and build, Year 2 to 3 enter and innovate, Year 3 to 5 scale and acquire, with 1 to 2 targeted acquisitions in functional snacking, women's health, and children's nutrition.</li><li>Capabilities to win: product innovation, consumer insights and personalization, digital and CRM, omnichannel distribution, and brand education.</li></ul></div>
+              <div class="feature-story" hidden><ul class="story-list"><li>Team project with Shuran Cheng, Ethan Chou, Natthaya Kangsanarak, Ariella Li, and Hazel Liu.</li><li>Where RXBAR competes: the protein bar and better-for-you snack bar categories. Core consumers are fitness-oriented people and clean-label seekers. The brand is sold through Whole Foods, Target, Costco, gyms, and e-commerce.</li><li>The problem: transparency is now table stakes. KIND and Clif Bar have improved ingredient messaging and reduced sugar, so clean-label no longer sets RXBAR apart. Big brands compete on scale and taste, and small brands compete on specialization and function.</li><li>Protect: defend the core active-consumer and clean-label base.</li><li>Extend: reach women's health (iron, collagen, hormonal health) and children's nutrition, where RX Kids is already launched and parents want clean-label, low-sugar snacks.</li><li>Explore: lead the functional snacking shift with new product lines that use real ingredients, such as adaptogens and nootropics, on the clean-label platform.</li><li>Winning position: other brands are indulgent (taste-first), performance (function-first), or functional but complex. RXBAR owns the space between simple and functional.</li><li>Roadmap: Year 1 to 2 protect and build, Year 2 to 3 enter and innovate, Year 3 to 5 scale and acquire, with 1 to 2 targeted acquisitions in functional snacking, women's health, and children's nutrition.</li><li>Capabilities to win: product innovation, consumer insights and personalization, digital and CRM, omnichannel distribution, and brand education.</li></ul></div>
               <div class="p-tags"><span class="tag">Competitive analysis</span><span class="tag">Growth segments</span><span class="tag">Roadmap</span><span class="tag">Acquisition</span></div>
-              <a class="feature-link" href="#" target="_blank" rel="noopener">Read the full plan →</a>
+              <a class="feature-link" href="https://drive.google.com/file/d/1IJ08F8kEBdjyS67KhBuU0sZsb_Iffu0I/view?usp=sharing" target="_blank" rel="noopener">Read the full plan →</a>
             </div>
           </article>
 
@@ -543,5 +562,22 @@
   })();
   </script>
 
+
+  <script>
+  (function () {
+    document.querySelectorAll('[data-acc]').forEach(function (acc) {
+      var panels = acc.querySelectorAll('.acc-panel');
+      function open(p) {
+        panels.forEach(function (x) { x.classList.toggle('is-open', x === p); });
+      }
+      panels.forEach(function (p) {
+        p.setAttribute('tabindex', '0');
+        p.addEventListener('mouseenter', function () { open(p); });
+        p.addEventListener('click', function () { open(p); });
+        p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(p); } });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
