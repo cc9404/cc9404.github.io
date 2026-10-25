@@ -10,6 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Bodoni+Moda:ital,wght@0,500;1,500&family=Caveat:wght@500&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script>if ("scrollRestoration" in history) history.scrollRestoration = "manual"; if (location.hash) history.replaceState(null, "", location.pathname + location.search);</script>
+
+  <style id="deck-css">
+    .deck { position: relative; width: 100%; max-width: 560px; margin: 0 auto; aspect-ratio: 16 / 11; perspective: 1200px; }
+    .deck-main { position: absolute; inset: 0; overflow: hidden; border: 1px solid #1A1A1A; border-radius: 10px; background: #0E0B18; box-shadow: 0 34px 60px -34px rgba(87,6,140,.55); transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .7s; }
+    .deck:hover .deck-main { transform: rotateX(4deg) rotateY(-7deg) translateY(-6px); }
+    .deck .slide { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; opacity: 0; transform: scale(1.05); transition: opacity .9s, transform 1.4s; }
+    .deck .slide.is-active { opacity: 1; transform: scale(1); }
+    .deck-thumb { position: absolute; width: 44%; right: -7%; bottom: -9%; aspect-ratio: 16 / 10; border: 1px solid #1A1A1A; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 20px 40px -20px rgba(0,0,0,.45); transform: rotate(-5deg); transition: transform .7s cubic-bezier(.2,.7,.2,1); z-index: 3; }
+    .deck:hover .deck-thumb { transform: rotate(0) translate(14px,-14px); }
+    .deck-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .deck-badge { position: absolute; top: -16px; right: -8px; z-index: 4; background: #57068C; color: #fff; font-size: .66rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: 9px 15px; border-radius: 999px; transform: rotate(3deg); }
+    .deck-dots { position: absolute; left: 16px; bottom: 14px; display: flex; gap: 7px; z-index: 5; }
+    .deck-dots .dot { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; background: rgba(255,255,255,.9); box-shadow: 0 0 0 1px rgba(26,26,26,.45); }
+    .deck-dots .dot.is-on { background: #57068C; box-shadow: 0 0 0 1px #fff; }
+    @media (max-width: 860px) { .deck { max-width: 100%; } }
+  </style>
 </head>
 <body>
 
@@ -302,7 +318,7 @@
         <p class="section-sub">Board-level plans and competitive strategy.</p>
 
           <article class="feature feature-left reveal">
-            <div class="feature-media" aria-hidden="false">
+            <div class="feature-media" aria-hidden="false" style="min-width:0;max-width:100%;overflow:visible;">
               <div class="deck" data-deck>
                 <div class="deck-badge">Board deck · 30 slides</div>
                 <div class="deck-main">
