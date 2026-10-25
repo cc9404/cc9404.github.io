@@ -1218,5 +1218,5 @@ html.is-loading { overflow: hidden; }
 .amp {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
-  font-weight: inherit;
+  font-weight: 300;
 }
