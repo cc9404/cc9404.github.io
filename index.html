@@ -28,16 +28,6 @@
   </style>
 
   <style id="kit-edu-css">
-    .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .edu-card { background: #FBF8F2; border: 1px solid #1A1A1A; border-radius: 14px; padding: 30px 28px 32px; display: flex; flex-direction: column; transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
-    .edu-card:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -26px rgba(87,6,140,.5); }
-    .edu-logo { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #fff; border: 1px solid #E4DDEC; display: grid; place-items: center; margin-bottom: 22px; }
-    .edu-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .edu-date { font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #57068C; }
-    .edu-card h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 1.45rem; line-height: 1.2; margin: 10px 0 12px; }
-    .edu-degree { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #3A3545; line-height: 1.6; }
-    .edu-note { font-family: 'Newsreader', Georgia, serif; font-size: 1.02rem; line-height: 1.65; color: #3A3545; margin-top: 14px; }
-    @media (max-width: 900px) { .edu-grid { grid-template-columns: 1fr; } }
 
     .kit { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
     .kit-tabs { display: grid; gap: 6px; }
@@ -58,6 +48,30 @@
     @keyframes kit-in { to { opacity: 1; transform: none; } }
     @media (max-width: 860px) { .kit { grid-template-columns: 1fr; gap: 28px; } .kit-stage { min-height: 300px; } }
     @media (prefers-reduced-motion: reduce) { .kit-panel, .kit-chip, .kit-tab::before { transition: none; animation: none; opacity: 1; transform: none; } }
+  </style>
+
+  <style id="edu-flip-css">
+    .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .edu-card { background: none; border: 0; padding: 0; box-shadow: none; position: relative; height: 380px; perspective: 1400px; cursor: pointer; border-radius: 16px; outline: none; }
+    .edu-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+    .edu-card.is-flipped .edu-inner { transform: rotateY(180deg); }
+    .edu-card:hover .edu-inner { transform: rotateY(4deg) translateY(-4px); }
+    .edu-card.is-flipped:hover .edu-inner { transform: rotateY(180deg) translateY(-4px); }
+    .edu-card:focus-visible { box-shadow: 0 0 0 3px #B58FD6; }
+    .edu-face { position: absolute; inset: 0; border-radius: 16px; padding: 30px 28px 26px; display: flex; flex-direction: column; backface-visibility: hidden; -webkit-backface-visibility: hidden; border: 1px solid #D9C4F0; box-shadow: 0 18px 36px -26px rgba(87,6,140,.45); }
+    .edu-front { background: #FFFFFF; }
+    .edu-back { background: linear-gradient(160deg, #57068C 0%, #7A3BC4 100%); color: #FFFFFF; transform: rotateY(180deg); border-color: #57068C; }
+    .edu-logo { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #FFFFFF; border: 1px solid #E4DDEC; display: grid; place-items: center; margin-bottom: 20px; }
+    .edu-logo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; display: block; }
+    .edu-date { font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #57068C; }
+    .edu-front h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; font-size: 1.45rem; line-height: 1.2; margin: 10px 0 12px; color: #1A1A1A; }
+    .edu-degree { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #3A3545; line-height: 1.6; }
+    .edu-hint { margin-top: auto; font-size: .66rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #57068C; border-bottom: 1px solid #B58FD6; align-self: flex-start; padding-bottom: 3px; }
+    .edu-back-label { font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #E9DDF7; }
+    .edu-desc { font-family: 'Newsreader', Georgia, serif; font-size: 1.04rem; line-height: 1.65; margin-top: 14px; color: #FFFFFF; }
+    .edu-back .edu-hint { color: #FFFFFF; border-bottom-color: rgba(255,255,255,.6); }
+    @media (max-width: 900px) { .edu-grid { grid-template-columns: 1fr; } .edu-card { height: 400px; } }
+    @media (prefers-reduced-motion: reduce) { .edu-inner { transition: none; } }
   </style>
 </head>
 <body>
@@ -455,25 +469,53 @@
         <p class="section-sub">A language foundation, now trained in marketing analytics at NYU.</p>
 
         <div class="edu-grid">
-          <article class="edu-card">
-            <div class="edu-logo"><img src="assets/logo-nyu.jpg" alt="New York University logo" /></div>
-            <p class="edu-date">Expected May 2027</p>
-            <h3>New York University</h3>
-            <p class="edu-degree">M.S. Integrated Marketing (Marketing Analytics) · GPA 3.92</p>
-            <p class="edu-note">Coursework in business analytics and data visualization, web analytics (attribution and clickstream), advanced test and experimental design, and predictive modeling.</p>
+          <article class="edu-card" tabindex="0" role="button" aria-expanded="false">
+            <div class="edu-inner">
+              <div class="edu-face edu-front">
+                <div class="edu-logo"><img src="assets/logo-nyu.jpg" alt="New York University logo" /></div>
+                <p class="edu-date">Expected May 2027</p>
+                <h3>New York University</h3>
+                <p class="edu-degree">M.S. Integrated Marketing (Marketing Analytics) · GPA 3.92</p>
+                <span class="edu-hint">Tap to read more <span aria-hidden="true">+</span></span>
+              </div>
+              <div class="edu-face edu-back">
+                <p class="edu-back-label">New York University</p>
+                <p class="edu-desc">At NYU I focus on turning customer and campaign data into actionable insights through experimentation, reporting, and strategic storytelling. Coursework covers business analytics, web attribution and clickstream analysis, experimental design, and predictive modeling. Recent projects include a telco churn analysis and an e-commerce marketing analytics study.</p>
+                <span class="edu-hint">Tap to close <span aria-hidden="true">×</span></span>
+              </div>
+            </div>
           </article>
-          <article class="edu-card">
-            <div class="edu-logo"><img src="assets/logo-wenzao.jpg" alt="Wenzao Ursuline University of Languages logo" /></div>
-            <p class="edu-date">2022</p>
-            <h3>Wenzao Ursuline University of Languages</h3>
-            <p class="edu-degree">B.A. English · Kaohsiung, Taiwan</p>
+          <article class="edu-card" tabindex="0" role="button" aria-expanded="false">
+            <div class="edu-inner">
+              <div class="edu-face edu-front">
+                <div class="edu-logo"><img src="assets/logo-wenzao.jpg" alt="Wenzao Ursuline University of Languages logo" /></div>
+                <p class="edu-date">2022</p>
+                <h3>Wenzao Ursuline University of Languages</h3>
+                <p class="edu-degree">B.A. English · GPA 3.6</p>
+                <span class="edu-hint">Tap to read more <span aria-hidden="true">+</span></span>
+              </div>
+              <div class="edu-face edu-back">
+                <p class="edu-back-label">Wenzao Ursuline University of Languages</p>
+                <p class="edu-desc">Four years of English studies at Wenzao built the bilingual foundation I bring to marketing work, moving between English and Mandarin with clients, teammates, and data.</p>
+                <span class="edu-hint">Tap to close <span aria-hidden="true">×</span></span>
+              </div>
+            </div>
           </article>
-          <article class="edu-card">
-            <div class="edu-logo"><img src="assets/logo-cuk.jpg" alt="The Catholic University of Korea logo" /></div>
-            <p class="edu-date">Aug. – Dec. 2020</p>
-            <h3>The Catholic University of Korea</h3>
-            <p class="edu-degree">Exchange Program · Division of Foreign Language &amp; Literature · GPA 4.17 / 4.5</p>
-            <p class="edu-note">Seoul, South Korea.</p>
+          <article class="edu-card" tabindex="0" role="button" aria-expanded="false">
+            <div class="edu-inner">
+              <div class="edu-face edu-front">
+                <div class="edu-logo"><img src="assets/logo-cuk.jpg" alt="The Catholic University of Korea logo" /></div>
+                <p class="edu-date">Aug. – Dec. 2020</p>
+                <h3>The Catholic University of Korea</h3>
+                <p class="edu-degree">Exchange Program · Division of Foreign Language &amp; Literature · GPA 4.17 / 4.5</p>
+                <span class="edu-hint">Tap to read more <span aria-hidden="true">+</span></span>
+              </div>
+              <div class="edu-face edu-back">
+                <p class="edu-back-label">The Catholic University of Korea</p>
+                <p class="edu-desc">A semester in Seoul through the exchange program with the Division of Foreign Language &amp; Literature. The experience broadened how I work across cultures, which I carry into international marketing projects.</p>
+                <span class="edu-hint">Tap to close <span aria-hidden="true">×</span></span>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -587,6 +629,21 @@
       t.addEventListener('mouseenter', function () { show(k); });
       t.addEventListener('focus', function () { show(k); });
       t.addEventListener('click', function () { show(k); });
+    });
+  })();
+  </script>
+
+  <script>
+  (function () {
+    document.querySelectorAll('.edu-card').forEach(function (card) {
+      function toggle() {
+        var on = card.classList.toggle('is-flipped');
+        card.setAttribute('aria-expanded', String(on));
+      }
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
     });
   })();
   </script>
