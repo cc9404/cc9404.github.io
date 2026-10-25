@@ -1278,3 +1278,122 @@ html.is-loading { overflow: hidden; }
   border-radius: 50%;
   background: #57068C;
 }
+
+/* ---------- LVMH: slide deck showcase ---------- */
+.deck {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 11;
+  perspective: 1200px;
+}
+.deck-main {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid #1A1A1A;
+  border-radius: 10px;
+  background: #0E0B18;
+  box-shadow: 0 34px 60px -34px rgba(87, 6, 140, 0.55);
+  transform-style: preserve-3d;
+  transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease);
+}
+.deck:hover .deck-main {
+  transform: rotateX(4deg) rotateY(-7deg) translateY(-6px);
+  box-shadow: 0 46px 70px -36px rgba(87, 6, 140, 0.6);
+}
+.deck .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.9s var(--ease), transform 1.4s var(--ease);
+}
+.deck .slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.deck-thumb {
+  position: absolute;
+  width: 44%;
+  right: -7%;
+  bottom: -9%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid #1A1A1A;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.45);
+  transform: rotate(-5deg);
+  transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease);
+  z-index: 3;
+}
+.deck:hover .deck-thumb {
+  transform: rotate(0deg) translate(14px, -14px);
+  box-shadow: 0 28px 50px -22px rgba(87, 6, 140, 0.5);
+}
+.deck-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.deck-badge {
+  position: absolute;
+  top: -16px;
+  right: -8px;
+  z-index: 4;
+  background: #57068C;
+  color: #FFFFFF;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 9px 15px;
+  border-radius: 999px;
+  transform: rotate(3deg);
+  box-shadow: 0 10px 20px -12px rgba(87, 6, 140, 0.8);
+}
+.deck-dots {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  display: flex;
+  gap: 7px;
+  z-index: 5;
+}
+.deck-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.deck-dots .dot.is-on {
+  background: #FFFFFF;
+  transform: scale(1.25);
+}
+@media (max-width: 860px) {
+  .deck { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .deck-main, .deck-thumb, .deck .slide { transition: none; }
+  .deck:hover .deck-main, .deck:hover .deck-thumb { transform: none; }
+}
+
+/* Dots stay visible on both the dark cover and the light team slide */
+.deck-dots .dot {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px rgba(26, 26, 26, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.deck-dots .dot.is-on {
+  background: #57068C;
+  box-shadow: 0 0 0 1px #FFFFFF, 0 2px 6px rgba(0, 0, 0, 0.35);
+}

@@ -261,3 +261,36 @@
     });
   });
 })();
+
+// LVMH slide deck: crossfade through the slides, pause on hover, click the dots to jump.
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-deck]').forEach(function (deck) {
+    var slides = deck.querySelectorAll('.slide');
+    var dots = deck.querySelectorAll('.dot');
+    var thumb = deck.querySelector('.deck-thumb img');
+    if (!slides.length || !thumb) return;
+    var current = 0;
+    var paused = false;
+
+    function show(n) {
+      current = n;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === n); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === n); });
+      // The thumbnail shows the slide that comes next
+      thumb.src = slides[(n + 1) % slides.length].getAttribute('src');
+    }
+
+    dots.forEach(function (d, k) {
+      d.addEventListener('click', function () { show(k); });
+    });
+    deck.addEventListener('mouseenter', function () { paused = true; });
+    deck.addEventListener('mouseleave', function () { paused = false; });
+
+    if (!reduce) {
+      setInterval(function () {
+        if (!paused) show((current + 1) % slides.length);
+      }, 3800);
+    }
+  });
+})();
