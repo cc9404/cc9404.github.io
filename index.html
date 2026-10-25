@@ -26,19 +26,6 @@
     .deck-dots .dot.is-on { background: #57068C; box-shadow: 0 0 0 1px #fff; }
     @media (max-width: 860px) { .deck { max-width: 100%; } }
   </style>
-
-  <style id="acc-css">
-    .acc { display: flex; gap: 10px; height: 400px; width: 100%; }
-    .acc-panel { flex: 1 1 0; margin: 0; position: relative; overflow: hidden; border: 1px solid #1A1A1A; border-radius: 12px; background: #1E1A2E; cursor: pointer; transition: flex .9s cubic-bezier(.2,.7,.2,1), box-shadow .9s; box-shadow: 0 24px 50px -30px rgba(87,6,140,.55); }
-    .acc-panel img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.12); transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
-    .acc-panel.is-open { flex: 3.2 1 0; }
-    .acc-panel.is-open img { transform: scale(1); }
-    .acc-panel figcaption { position: absolute; left: 14px; bottom: 14px; font-size: .66rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(26,26,26,.72); padding: 7px 12px; border-radius: 999px; white-space: nowrap; }
-    .acc-panel:not(.is-open) figcaption { background: #57068C; }
-    .acc-panel:focus-visible { outline: 2px solid #57068C; outline-offset: 4px; }
-    @media (max-width: 860px) { .acc { height: 300px; } }
-    @media (prefers-reduced-motion: reduce) { .acc-panel, .acc-panel img { transition: none; } }
-  </style>
 </head>
 <body>
 
@@ -323,14 +310,7 @@
 
         </div>
 
-        <div id="cat-strategy" class="cat-block">
-          <header class="section-head cat-head">
-            <h2 style="font-size:clamp(2.2rem,4vw,3rem);"><span class="sec-no">B.</span> Brand <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> growth strategy</h2>
-            <span class="tail">2 projects</span>
-          </header>
-        <p class="section-sub">Board-level plans and competitive strategy.</p>
-
-          <article class="feature feature-left reveal">
+        <article class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false" style="min-width:0;max-width:100%;overflow:visible;">
               <div class="deck" data-deck>
                 <div class="deck-badge">Board deck · 30 slides</div>
@@ -356,15 +336,14 @@
 
           <article class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
-              <div class="acc" data-acc>
-                <figure class="acc-panel is-open">
-                  <img src="assets/rxbar-cover.png?v=1" alt="RX Bar Growth Strategy cover slide" />
-                  <figcaption>Cover</figcaption>
-                </figure>
-                <figure class="acc-panel">
-                  <img src="assets/rxbar-landscape.png?v=1" alt="RX Bar competitive landscape slide" />
-                  <figcaption>Competitive landscape</figcaption>
-                </figure>
+              <div class="deck" data-deck>
+                <div class="deck-badge">Team deck · 23 slides</div>
+                <div class="deck-main">
+                  <img class="slide is-active" src="assets/rxbar-cover.png?v=1" alt="RX Bar Growth Strategy cover slide" />
+                  <img class="slide" src="assets/rxbar-landscape.png?v=1" alt="RX Bar competitive landscape slide" />
+                  <div class="deck-dots"><span class="dot is-on"></span><span class="dot"></span></div>
+                </div>
+                <div class="deck-thumb"><img src="assets/rxbar-landscape.png?v=1" alt="" /></div>
               </div>
             </div>
             <div class="feature-body">
@@ -562,20 +541,27 @@
   })();
   </script>
 
-
   <script>
   (function () {
-    document.querySelectorAll('[data-acc]').forEach(function (acc) {
-      var panels = acc.querySelectorAll('.acc-panel');
-      function open(p) {
-        panels.forEach(function (x) { x.classList.toggle('is-open', x === p); });
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('[data-deck]').forEach(function (deck) {
+      var slides = deck.querySelectorAll('.slide');
+      var dots = deck.querySelectorAll('.dot');
+      var thumb = deck.querySelector('.deck-thumb img');
+      if (!slides.length || !thumb) return;
+      var current = 0, paused = false;
+      function show(n) {
+        current = n;
+        slides.forEach(function (sl, k) { sl.classList.toggle('is-active', k === n); });
+        dots.forEach(function (d, k) { d.classList.toggle('is-on', k === n); });
+        thumb.src = slides[(n + 1) % slides.length].getAttribute('src');
       }
-      panels.forEach(function (p) {
-        p.setAttribute('tabindex', '0');
-        p.addEventListener('mouseenter', function () { open(p); });
-        p.addEventListener('click', function () { open(p); });
-        p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(p); } });
-      });
+      dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
+      deck.addEventListener('mouseenter', function () { paused = true; });
+      deck.addEventListener('mouseleave', function () { paused = false; });
+      if (!reduce) {
+        setInterval(function () { if (!paused) show((current + 1) % slides.length); }, 3800);
+      }
     });
   })();
   </script>
