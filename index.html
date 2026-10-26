@@ -114,6 +114,25 @@
     @keyframes ow-pulse { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(1.9); opacity: 0; } }
     @media (prefers-reduced-motion: reduce) { .ow-dot::after { animation: none; opacity: 0; } }
   </style>
+
+  <style id="explore-list-css">
+    .stickers { align-items: stretch; }
+    .sticker { display: flex; flex-direction: column; gap: 10px; }
+    .sticker-list { list-style: none; padding: 4px 0 0; margin: 4px 0 6px; border-top: 1px dashed #D9C4F0; }
+    .sticker-list li { border-bottom: 1px dashed #EEE8F5; }
+    .sticker-list a { display: block; padding: 9px 0; font-family: 'Newsreader', Georgia, serif; font-size: 1.02rem; color: #1A1A1A; text-decoration: none; position: relative; transition: padding .35s cubic-bezier(.2,.7,.2,1), color .3s; }
+    .sticker-list a::after { content: "→"; position: absolute; right: 0; top: 50%; transform: translate(-6px, -50%); opacity: 0; color: #57068C; transition: transform .35s, opacity .35s; }
+    .sticker-list a:hover { padding-left: 10px; color: #57068C; }
+    .sticker-list a:hover::after { opacity: 1; transform: translate(0, -50%); }
+    .sticker-note { margin-top: auto; padding-top: 8px; text-decoration: none; }
+    .sticker-note:hover { text-decoration: underline; }
+    .feature:target { animation: target-flash 1.8s ease-out 1; }
+    @keyframes target-flash {
+      0% { box-shadow: 0 0 0 0 rgba(87,6,140,.45); }
+      100% { box-shadow: 0 0 0 22px rgba(87,6,140,0); }
+    }
+    @media (prefers-reduced-motion: reduce) { .feature:target { animation: none; } }
+  </style>
 </head>
 <body>
 
@@ -195,28 +214,40 @@
           
         </header>
 
-        <div class="stickers" style="margin-top:72px;padding-top:12px;">
-          <a class="sticker" href="#cat-analytics" data-stamp>
-            <span class="sticker-open" aria-hidden="true">Open ↗</span>
+        <div class="stickers">
+          <div class="sticker">
             <span class="sticker-count">5 projects</span>
             <h3>Marketing analytics <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> SQL</h3>
             <p>Retention, funnels, and customer segmentation.</p>
-            <span class="sticker-note">start here →</span>
-          </a>
-          <a class="sticker" href="#cat-strategy" data-stamp>
-            <span class="sticker-open" aria-hidden="true">Open ↗</span>
+            <ul class="sticker-list">
+              <li><a href="#proj-telco">Telco churn &amp; retention</a></li>
+              <li><a href="#proj-ecommerce">E-commerce funnel analytics</a></li>
+              <li><a href="#proj-rfm">RFM customer segmentation</a></li>
+              <li><a href="#proj-restaurants">Restaurant clustering</a></li>
+              <li><a href="#proj-basket">Market basket analysis</a></li>
+            </ul>
+            <a class="sticker-note" href="#cat-analytics">start here →</a>
+          </div>
+          <div class="sticker">
             <span class="sticker-count">2 projects</span>
             <h3>Brand <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> growth strategy</h3>
             <p>Board-level plans and competitive strategy.</p>
-            <span class="sticker-note">see the strategy →</span>
-          </a>
-          <a class="sticker" href="#cat-creative" data-stamp>
-            <span class="sticker-open" aria-hidden="true">Open ↗</span>
+            <ul class="sticker-list">
+              <li><a href="#proj-lvmh">LVMH strategic plan</a></li>
+              <li><a href="#proj-rxbar">RX Bar growth strategy</a></li>
+            </ul>
+            <a class="sticker-note" href="#cat-strategy">see the strategy →</a>
+          </div>
+          <div class="sticker">
             <span class="sticker-count">2 projects</span>
             <h3>Campaigns <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> creative</h3>
             <p>Client-facing campaign planning, end to end.</p>
-            <span class="sticker-note">see the teamwork →</span>
-          </a>
+            <ul class="sticker-list">
+              <li><a href="#proj-mud">MUD JEANS permanent campaign</a></li>
+              <li><a href="#proj-wilson">Wilson integrated campaign</a></li>
+            </ul>
+            <a class="sticker-note" href="#cat-creative">see the teamwork →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -252,7 +283,7 @@
           <div class="exp-body">
             <h3>Samsung</h3>
             <p class="exp-role">Student Consultant</p>
-            <p class="exp-text">On the NYU Real World project for Samsung, I work as the Insight Hunter on a four-person team building a holiday campaign for The Frame and Art Store. I synthesize travel, dining, and home-moving data into audience insights, help shape three campaign concepts (from an airport experience to restaurant activations and a serialized social drama), and prepare the client status reports that carry the team's research into each review.</p>
+            <p class="exp-text">On the NYU Real World project for Samsung x GENE Agency, I work as the Insight Hunter on a four-person team building a holiday campaign for The Frame and Art Store. I synthesize travel, dining, and home-moving data into audience insights, help shape three campaign concepts (from an airport experience to restaurant activations and a serialized social drama), and prepare the client status reports that carry the team's research into each review.</p>
           </div>
         </article>
 
@@ -300,7 +331,7 @@
             <span class="tail">5 projects</span>
           </header>
           <p class="section-sub">Retention, funnels, and segmentation, built with SQL and clustering methods.</p>
-<article class="feature feature-left reveal">
+<article id="proj-telco" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
@@ -317,7 +348,7 @@
               <div class="p-tags"><span class="tag">SQL</span><span class="tag">Churn analysis</span><span class="tag">Retention</span><span class="tag">Cohort modeling</span></div>
               <a class="feature-link" href="https://github.com/cc9404/telco_retention_and_churn_analytics" target="_blank" rel="noopener">View GitHub repo →</a>
             </div>
-          </article><article class="feature feature-right reveal">
+          </article><article id="proj-ecommerce" class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
@@ -334,7 +365,7 @@
               <div class="p-tags"><span class="tag">SQL</span><span class="tag">A/B testing</span><span class="tag">Channel ROI</span><span class="tag">Funnel analysis</span></div>
               <a class="feature-link" href="https://github.com/cc9404/sql_analysis_ethan_chou" target="_blank" rel="noopener">View GitHub repo →</a>
             </div>
-          </article><article class="feature feature-left reveal">
+          </article><article id="proj-rfm" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
@@ -351,7 +382,7 @@
               <div class="p-tags"><span class="tag">RFM modeling</span><span class="tag">Segmentation</span><span class="tag">Customer value</span></div>
               <a class="feature-link" href="https://github.com/cc9404/market_segmentation_portfolio/tree/main/uk_online_retail_rfm_segmentation" target="_blank" rel="noopener">View GitHub repo →</a>
             </div>
-          </article><article class="feature feature-right reveal">
+          </article><article id="proj-restaurants" class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
@@ -368,7 +399,7 @@
               <div class="p-tags"><span class="tag">K-Means</span><span class="tag">Clustering</span><span class="tag">Unsupervised learning</span></div>
               <a class="feature-link" href="https://github.com/cc9404/market_segmentation_portfolio/tree/main/us_independent_restaurants_kmeans" target="_blank" rel="noopener">View GitHub repo →</a>
             </div>
-          </article><article class="feature feature-left reveal">
+          </article><article id="proj-basket" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="stack">
                 <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
@@ -394,7 +425,7 @@
             <span class="tail">2 projects</span>
           </header>
           <p class="section-sub">Board-level plans and competitive strategy.</p>
-<article class="feature feature-left reveal">
+<article id="proj-lvmh" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false" style="min-width:0;max-width:100%;overflow:visible;">
               <div class="deck" data-deck>
                 <div class="deck-badge">Board deck · 30 slides</div>
@@ -416,7 +447,7 @@
               <div class="p-tags"><span class="tag">Strategy</span><span class="tag">Luxury</span><span class="tag">Board presentation</span><span class="tag">Multi-sensory</span></div>
               <a class="feature-link" href="https://drive.google.com/file/d/1tJBQ0XVOrdpil7DyZeQy3umxLefNyNLG/view?usp=sharing" target="_blank" rel="noopener">Read the full plan →</a>
             </div>
-          </article><article class="feature feature-right reveal">
+          </article><article id="proj-rxbar" class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="deck" data-deck>
                 <div class="deck-badge">Team deck · 23 slides</div>
@@ -448,7 +479,7 @@
           </header>
           <p class="section-sub">Client-facing campaigns, from planning to measurable results.</p>
 
-          <article class="feature feature-left reveal">
+          <article id="proj-mud" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="deck" data-deck>
                 <div class="deck-badge">Campaign deck</div>
@@ -472,7 +503,7 @@
             </div>
           </article>
 
-          <article class="feature feature-right reveal">
+          <article id="proj-wilson" class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="deck" data-deck>
                 <div class="deck-badge">Campaign deck</div>
