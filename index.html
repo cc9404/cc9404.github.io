@@ -216,14 +216,13 @@
 
         <div class="stickers">
           <div class="sticker">
-            <span class="sticker-count">5 projects</span>
+            <span class="sticker-count">4 projects</span>
             <h3>Marketing analytics <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> SQL</h3>
             <p>Retention, funnels, and customer segmentation.</p>
             <ul class="sticker-list">
               <li><a href="#proj-telco">Telco churn &amp; retention</a></li>
               <li><a href="#proj-ecommerce">E-commerce funnel analytics</a></li>
               <li><a href="#proj-rfm">RFM customer segmentation</a></li>
-              <li><a href="#proj-restaurants">Restaurant clustering</a></li>
               <li><a href="#proj-basket">Market basket analysis</a></li>
             </ul>
             <a class="sticker-note" href="#cat-analytics">start here →</a>
@@ -328,7 +327,7 @@
         <div id="cat-analytics" class="cat-block">
           <header class="section-head cat-head">
             <h2 style="font-size:clamp(2.2rem,4vw,3rem);"><span class="sec-no">A.</span> Marketing analytics <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> SQL</h2>
-            <span class="tail">5 projects</span>
+            <span class="tail">4 projects</span>
           </header>
           <p class="section-sub">Retention, funnels, and segmentation, built with SQL and clustering methods.</p>
 <article id="proj-telco" class="feature feature-left reveal">
@@ -377,9 +376,14 @@
             </div>
           </article><article id="proj-rfm" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false">
-              <div class="stack">
-                <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
-                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/market_segmentation_portfolio/tree/main/uk_online_retail_rfm_segmentation" target="_blank" rel="noopener" aria-label="RFM customer segments preview, open on GitHub"><img src="assets/project-rfm.png?v=2" alt="RFM customer segments preview" /></a></div>
+              <div class="deck" data-deck>
+                <div class="deck-badge">Project deck · 18 slides</div>
+                <div class="deck-main">
+                  <img class="slide is-active" src="assets/rfm-slide-01.png?v=1" alt="RFM project slide: cover" />
+                  <img class="slide" src="assets/rfm-slide-02.png?v=1" alt="RFM project slide: the method" />
+                  <div class="deck-dots"><span class="dot is-on"></span><span class="dot"></span></div>
+                </div>
+                <div class="deck-thumb"><img src="assets/rfm-slide-02.png?v=1" alt="" /></div>
               </div>
             </div>
             <div class="feature-body">
@@ -390,24 +394,7 @@
               <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
               <div class="feature-story" hidden><ul class="story-list"><li>Uses the UCI Machine Learning Repository's Online Retail dataset of UK transactions.</li><li>Cleans the raw transactions, aggregates them to one row per customer, and builds RFM features from recency, frequency, and monetary value.</li><li>Scores each customer by quartile, then groups them into customer-value segments.</li><li>Visualizes the segments to support retention and targeted marketing decisions.</li></ul></div>
               <div class="p-tags"><span class="tag">RFM modeling</span><span class="tag">Segmentation</span><span class="tag">Customer value</span></div>
-              <a class="feature-link" href="https://github.com/cc9404/market_segmentation_portfolio/tree/main/uk_online_retail_rfm_segmentation" target="_blank" rel="noopener">View GitHub repo →</a>
-            </div>
-          </article><article id="proj-restaurants" class="feature feature-right reveal">
-            <div class="feature-media" aria-hidden="false">
-              <div class="stack">
-                <div class="stack-card back"><div class="ph ph-b"><span>GitHub repository</span></div></div>
-                <div class="stack-card front"><a class="feature-img-link" href="https://github.com/cc9404/market_segmentation_portfolio/tree/main/us_independent_restaurants_kmeans" target="_blank" rel="noopener" aria-label="Top 100 restaurants clustering preview, open on GitHub"><img src="assets/project-restaurants.png?v=2" alt="Top 100 restaurants clustering preview" /></a></div>
-              </div>
-            </div>
-            <div class="feature-body">
-              <p class="feature-kicker">Feature 04 · Marketing analytics</p>
-              <h3>Top 100 US Independent Restaurants Clustering</h3>
-              <p class="feature-goal"><strong>Goal:</strong> segment the highest-grossing independent US restaurants by how they earn, not just how much.</p>
-              <ul class="feature-points"><li>K-Means clustering on average check size and annual sales.</li><li>Four distinct business models, with the number of clusters chosen by the elbow method.</li></ul>
-              <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
-              <div class="feature-story" hidden><ul class="story-list"><li>Ranking by sales alone hides the business model: a $20M restaurant can serve many guests at $35, or a few at $150.</li><li>The elbow method showed a clear turning point at K = 4, where adding clusters stopped reducing error meaningfully.</li><li>Mega-volume outliers: about $40 to $45 per check and $35M+ in sales, built on guest throughput and table turnover.</li><li>High-grossing premium venues: about $85 to $90 per check and $22M to $28M in sales, with strong pricing power.</li><li>Steady high performers: about $75 to $80 per check and $17M to $20M in sales, with steady, profitable demand.</li><li>Core market challengers: about $50 to $60 per check and $11M to $15M in sales, relying on consistent neighborhood traffic.</li></ul></div>
-              <div class="p-tags"><span class="tag">K-Means</span><span class="tag">Clustering</span><span class="tag">Unsupervised learning</span></div>
-              <a class="feature-link" href="https://github.com/cc9404/market_segmentation_portfolio/tree/main/us_independent_restaurants_kmeans" target="_blank" rel="noopener">View GitHub repo →</a>
+              <a class="feature-link" href="https://github.com/cc9404/market_segmentation_portfolio/tree/main/uk_online_retail_rfm_segmentation" target="_blank" rel="noopener">View GitHub repo →</a><a class="feature-link" href="https://drive.google.com/file/d/1Pss6fpPh0cSmJwPi6Waa8U3Dh58GupUW/view?usp=sharing" target="_blank" rel="noopener" style="display:block;width:max-content;margin-top:12px;">View slides →</a>
             </div>
           </article><article id="proj-basket" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false">
@@ -417,7 +404,7 @@
               </div>
             </div>
             <div class="feature-body">
-              <p class="feature-kicker">Feature 05 · Marketing analytics</p>
+              <p class="feature-kicker">Feature 04 · Marketing analytics</p>
               <h3>Market Basket Analysis</h3>
               <p class="feature-goal"><strong>Goal:</strong> find which products customers buy together, and use those pairings to design bundles and cross-sell offers.</p>
               <ul class="feature-points"><li>Apriori association rules on 380 French transaction baskets covering 1,541 products.</li><li>Filtered for lift of at least 2.0 and confidence of at least 60%.</li><li>Recommended partyware bundles, tiered collector pricing, and checkout cross-sells.</li></ul>
