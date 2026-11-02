@@ -133,6 +133,63 @@
     }
     @media (prefers-reduced-motion: reduce) { .feature:target { animation: none; } }
   </style>
+
+  <style id="certs-css">
+    .cert-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
+    .cert-filter { font-family: 'Inter', Arial, sans-serif; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: #57068C; background: #F4EEFA; border: 1px solid #D9C4F0; border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: background .25s, color .25s; }
+    .cert-filter span { opacity: .7; margin-left: 4px; }
+    .cert-filter:hover { background: #EADCF5; }
+    .cert-filter.is-on { background: #57068C; color: #FFFFFF; border-color: #57068C; }
+    .cert-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+    .cert-card { background: #FFFFFF; border: 1px solid #E4DDEC; border-radius: 12px; padding: 14px 16px; cursor: pointer; transition: border-color .25s, box-shadow .25s, transform .25s; outline: none; }
+    .cert-card:hover, .cert-card:focus-visible { border-color: #B58FD6; box-shadow: 0 6px 18px rgba(87,6,140,.08); transform: translateY(-2px); }
+    .cert-card[hidden] { display: none; }
+    .cert-top { display: grid; grid-template-columns: 44px 1fr 16px; gap: 12px; align-items: center; }
+    .cert-logo { width: 44px; height: 44px; border-radius: 10px; background: #F7F5FA; border: 1px solid #E4DDEC; display: grid; place-items: center; overflow: hidden; font-family: 'Inter', Arial, sans-serif; font-size: .7rem; font-weight: 700; color: #57068C; }
+    .cert-logo img { width: 80%; height: 80%; object-fit: contain; }
+    .cert-logo.is-mono { background: #57068C; color: #FFFFFF; border-color: #57068C; }
+    .cert-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .cert-name { font-family: 'Newsreader', Georgia, serif; font-size: 1rem; color: #1A1A1A; line-height: 1.3; }
+    .cert-meta { font-family: 'Inter', Arial, sans-serif; font-size: .74rem; color: #5A5566; }
+    .cert-caret { color: #57068C; font-size: 1.1rem; transition: transform .25s; text-align: center; }
+    .cert-card.is-open .cert-caret { transform: rotate(45deg); }
+    .cert-detail { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px dashed #E4DDEC; }
+    .cert-card.is-open .cert-detail { display: block; }
+    .cert-open { font-family: 'Inter', Arial, sans-serif; font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #57068C; text-decoration: none; border-bottom: 1px solid #B58FD6; padding-bottom: 2px; }
+    .cert-open.is-off { color: #5A5566; border-bottom: 0; font-weight: 400; text-transform: none; letter-spacing: 0; }
+    .cert-hint { font-family: 'Inter', Arial, sans-serif; font-size: .74rem; color: #5A5566; margin-top: 12px; }
+    @media (prefers-reduced-motion: reduce) { .cert-card, .cert-caret, .cert-filter { transition: none; } }
+  </style>
+  <script id="certs-js">
+    document.addEventListener("DOMContentLoaded", function () {
+      var filters = document.querySelectorAll('.cert-filter');
+      var cards = document.querySelectorAll('.cert-card');
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var f = btn.getAttribute('data-filter');
+          filters.forEach(function (b) { b.classList.toggle('is-on', b === btn); });
+          cards.forEach(function (c) {
+            var show = f === 'all' || c.getAttribute('data-cat') === f;
+            c.hidden = !show;
+          });
+        });
+      });
+      function toggle(card) {
+        var open = !card.classList.contains('is-open');
+        card.classList.toggle('is-open', open);
+        card.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      cards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
+          if (e.target.closest('a')) return;
+          toggle(card);
+        });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(card); }
+        });
+      });
+    });
+  </script>
 </head>
 <body>
 
@@ -620,45 +677,14 @@
 
         <div class="tk-certs">
           <h3 class="tk-title">Licenses <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> certifications</h3>
-          <ul class="tk-cert-list">
-            <li class="tk-cert">
-              <span class="tk-cert-name">Google Ads Search Professional Certification</span>
-              <span class="tk-cert-meta">Google Digital Academy (Skillshop) · Oct 2026</span>
-              <a class="tk-cert-link" href="https://skillshop.credential.net/17beedde-0b40-4712-bd2b-b526b47fe08c" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">HubSpot Marketing Hub Software</span>
-              <span class="tk-cert-meta">HubSpot Academy · Jan 2026</span>
-              <a class="tk-cert-link" href="https://app-na2.hubspot.com/academy/achievements/t6tjb9n9/en/1/ethan-chou/hubspot-marketing-hub-software" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">Generative AI for Marketing Professional Certificate</span>
-              <span class="tk-cert-meta">American Marketing Association · Aug 2025</span>
-              <a class="tk-cert-link" href="https://www.linkedin.com/learning/certificates/1e2be81a05d2a5a4210177c13303628fb29140ede7d7e53e151e7cfe35cdbdff/" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">AI-Powered Performance Ads Certification</span>
-              <span class="tk-cert-meta">Google · Aug 2025</span>
-              <a class="tk-cert-link" href="https://skillshop.credential.net/0c33acc6-8986-4a65-b67c-645bf757414c" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">Email Marketing Professional Certificate</span>
-              <span class="tk-cert-meta">Intuit Mailchimp · Jul 2025</span>
-              <a class="tk-cert-link" href="https://www.linkedin.com/learning/certificates/87dc3c28c6df6bda98bbea5935ce043d0be8740a43cad90ded14001d6c64f1e7/" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">Digital Marketing Professional Certificate</span>
-              <span class="tk-cert-meta">Content Marketing Institute · Jul 2025</span>
-              <a class="tk-cert-link" href="https://www.linkedin.com/learning/certificates/314370c58b31dc8fd058fafc997cd4d6a4f5bb86f4bf9c901255a8a497a80bfb/" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">Career Essentials in Business Analysis</span>
-              <span class="tk-cert-meta">Microsoft & LinkedIn · Jul 2025</span>
-              <a class="tk-cert-link" href="https://www.linkedin.com/learning/certificates/9bfc3b7d9fa63d18454345eb77e34d6be775e858e2e928a159198a18660a0abd/" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">Generative AI for Marketing with Microsoft 365 Copilot</span>
-              <span class="tk-cert-meta">Microsoft · Jun 2025</span>
-              <a class="tk-cert-link" href="https://www.linkedin.com/learning/certificates/246419645cd750f8dd4290a928be9ede0759d89828cf49b99b7e7a620c5a5993/" target="_blank" rel="noopener">View ↗</a>
-            </li><li class="tk-cert">
-              <span class="tk-cert-name">Google Analytics Certification</span>
-              <span class="tk-cert-meta">Google · Jun 2025</span>
-              <span></span>
-            </li>
-          </ul>
+          <div class="cert-filters" role="tablist" aria-label="Filter certifications by skill">
+            <button class="cert-filter is-on" data-filter="all" type="button">All <span>9</span></button>
+            <button class="cert-filter" data-filter="digital" type="button">Digital marketing <span>4</span></button>
+            <button class="cert-filter" data-filter="ai" type="button">Generative AI <span>3</span></button>
+            <button class="cert-filter" data-filter="analytics" type="button">Analytics &amp; business <span>2</span></button>
+          </div>
+          <ul class="cert-grid"><li class="cert-card" data-cat="digital" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/google.png" alt="Google logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='G';" /></span><div class="cert-text"><span class="cert-name">Google Ads Search Professional Certification</span><span class="cert-meta">Google Digital Academy (Skillshop) · Oct 2026</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://skillshop.credential.net/17beedde-0b40-4712-bd2b-b526b47fe08c" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="digital" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/hubspot.png" alt="HubSpot logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='HS';" /></span><div class="cert-text"><span class="cert-name">HubSpot Marketing Hub Software</span><span class="cert-meta">HubSpot Academy · Jan 2026</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://app-na2.hubspot.com/academy/achievements/t6tjb9n9/en/1/ethan-chou/hubspot-marketing-hub-software" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="ai" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/ama.png" alt="American Marketing Association logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='AMA';" /></span><div class="cert-text"><span class="cert-name">Generative AI for Marketing Professional Certificate</span><span class="cert-meta">American Marketing Association · Aug 2025</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://www.linkedin.com/learning/certificates/1e2be81a05d2a5a4210177c13303628fb29140ede7d7e53e151e7cfe35cdbdff/" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="ai" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/google.png" alt="Google logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='G';" /></span><div class="cert-text"><span class="cert-name">AI-Powered Performance Ads Certification</span><span class="cert-meta">Google · Aug 2025</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://skillshop.credential.net/0c33acc6-8986-4a65-b67c-645bf757414c" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="digital" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/mailchimp.png" alt="Intuit Mailchimp logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='MC';" /></span><div class="cert-text"><span class="cert-name">Email Marketing Professional Certificate</span><span class="cert-meta">Intuit Mailchimp · Jul 2025</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://www.linkedin.com/learning/certificates/87dc3c28c6df6bda98bbea5935ce043d0be8740a43cad90ded14001d6c64f1e7/" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="digital" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/cmi.png" alt="Content Marketing Institute logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='CMI';" /></span><div class="cert-text"><span class="cert-name">Digital Marketing Professional Certificate</span><span class="cert-meta">Content Marketing Institute · Jul 2025</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://www.linkedin.com/learning/certificates/314370c58b31dc8fd058fafc997cd4d6a4f5bb86f4bf9c901255a8a497a80bfb/" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="analytics" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/microsoft.png" alt="Microsoft & LinkedIn logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='MS';" /></span><div class="cert-text"><span class="cert-name">Career Essentials in Business Analysis</span><span class="cert-meta">Microsoft & LinkedIn · Jul 2025</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://www.linkedin.com/learning/certificates/9bfc3b7d9fa63d18454345eb77e34d6be775e858e2e928a159198a18660a0abd/" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="ai" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/microsoft.png" alt="Microsoft logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='MS';" /></span><div class="cert-text"><span class="cert-name">Generative AI for Marketing with Microsoft 365 Copilot</span><span class="cert-meta">Microsoft · Jun 2025</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><a class="cert-open" href="https://www.linkedin.com/learning/certificates/246419645cd750f8dd4290a928be9ede0759d89828cf49b99b7e7a620c5a5993/" target="_blank" rel="noopener">View credential ↗</a></div></li><li class="cert-card" data-cat="analytics" tabindex="0" role="button" aria-expanded="false"><div class="cert-top"><span class="cert-logo"><img src="assets/logos/google.png" alt="Google logo" onerror="var p=this.parentNode; p.classList.add('is-mono'); p.textContent='G';" /></span><div class="cert-text"><span class="cert-name">Google Analytics Certification</span><span class="cert-meta">Google · Jun 2025</span></div><span class="cert-caret" aria-hidden="true">+</span></div><div class="cert-detail"><span class="cert-open is-off">Credential link not available</span></div></li></ul>
+          <p class="cert-hint">Select a certificate to see its credential link.</p>
         </div>
       </div>
     </section>
