@@ -273,10 +273,11 @@
 
         <div class="stickers">
           <div class="sticker">
-            <span class="sticker-count">4 projects</span>
+            <span class="sticker-count">5 projects</span>
             <h3>Marketing analytics <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> SQL</h3>
             <p>Retention, funnels, and customer segmentation.</p>
             <ul class="sticker-list">
+              <li><a href="#proj-card">Card portfolio management</a></li>
               <li><a href="#proj-telco">Telco churn &amp; retention</a></li>
               <li><a href="#proj-ecommerce">E-commerce funnel analytics</a></li>
               <li><a href="#proj-rfm">RFM customer segmentation</a></li>
@@ -387,7 +388,30 @@
             <span class="tail">4 projects</span>
           </header>
           <p class="section-sub">Retention, funnels, and segmentation, built with SQL and clustering methods.</p>
-<article id="proj-telco" class="feature feature-left reveal">
+<article id="proj-card" class="feature feature-left reveal">
+            <div class="feature-media" aria-hidden="false">
+              <div class="deck" data-deck>
+                <div class="deck-badge">Project deck · 14 slides</div>
+                <div class="deck-main">
+                  <img class="slide is-active" src="assets/card-slide-01.jpg?v=1" alt="Card portfolio project slide: cover" />
+                  <img class="slide" src="assets/card-slide-12.jpg?v=1" alt="Card portfolio project slide: expected impact" />
+                  <div class="deck-dots"><span class="dot is-on"></span><span class="dot"></span></div>
+                </div>
+                <div class="deck-thumb"><img src="assets/card-slide-12.jpg?v=1" alt="" /></div>
+              </div>
+            </div>
+            <div class="feature-body">
+              <p class="feature-kicker">Feature 01 · Marketing analytics</p>
+              <h3>Card Portfolio Management</h3>
+              <p class="feature-goal"><strong>Goal:</strong> find which cardholders are fading, under-using, or engaged, and what each group needs from the portfolio.</p>
+              <ul class="feature-points"><li>Analyzed 10,127 credit card accounts with SQL (public synthetic dataset).</li><li>Found that accounts using under 10% of their limit attrite at 26.5%, against a 16.1% base.</li><li>Segmented cardholders into four actionable groups and sized the spend linked to attrition.</li></ul>
+              <button class="feature-toggle" type="button" aria-expanded="false">The full story <span class="plus">+</span></button>
+              <div class="feature-story" hidden><ul class="story-list"><li>Background: how a card portfolio team can find where cardholders are lost, and what to do about it, using behaviour rather than card tier alone.</li><li>Data and segmentation: five SQL modules cover portfolio health, tier and segment mix, product penetration and attrition, opportunity assessment, and a rule-based segmentation into four groups.</li><li>Strategy: re-engage fading accounts before they leave, stimulate spend among under-using accounts, protect engaged multi-product holders, and add a second product for core low-product accounts. The Blue-to-Silver upgrade path covers 1,127 accounts.</li><li>Expected impact: if fading accounts recover 10% to 30% of their excess attrition, the portfolio keeps an estimated $138K to $414K in annual spend. These are scenario estimates, not forecasts.</li><li>Limits: the dataset has no fee, interchange, or delinquency fields, so the work makes no profitability or credit-risk claims.</li></ul></div>
+              <div class="p-tags"><span class="tag">SQL</span><span class="tag">Customer segmentation</span><span class="tag">Portfolio strategy</span><span class="tag">Opportunity sizing</span></div>
+              <a class="feature-link" href="https://github.com/cc9404/card_portfolio_management" target="_blank" rel="noopener">View GitHub repo →</a><a class="feature-link" href="https://drive.google.com/file/d/1WGHYknujGLKXJYT5gR5J1C7njPe5Dfmg/view?usp=sharing" target="_blank" rel="noopener" style="display:block;width:max-content;margin-top:12px;">View slides →</a>
+            </div>
+          </article>
+          <article id="proj-telco" class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="deck" data-deck>
                 <div class="deck-badge">Project deck · 14 slides</div>
@@ -400,7 +424,7 @@
               </div>
             </div>
             <div class="feature-body">
-              <p class="feature-kicker">Feature 01 · Marketing analytics</p>
+              <p class="feature-kicker">Feature 02 · Marketing analytics</p>
               <h3>Telco Customer Retention <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> Churn Analytics</h3>
               <p class="feature-goal"><strong>Goal:</strong> find which customers churn, when they churn, and where a retention plan should step in.</p>
               <ul class="feature-points"><li>Analyzed 7,043 telecom accounts with SQL.</li><li>Surfaced a 55.2% churn cliff in the first six months.</li><li>Showed that bundle strategies can push churn below 15%.</li></ul>
@@ -409,7 +433,7 @@
               <div class="p-tags"><span class="tag">SQL</span><span class="tag">Churn analysis</span><span class="tag">Retention</span><span class="tag">Cohort modeling</span></div>
               <a class="feature-link" href="https://github.com/cc9404/telco_retention_and_churn_analytics" target="_blank" rel="noopener">View GitHub repo →</a><a class="feature-link" href="https://drive.google.com/file/d/1_QLJeig1EWtDcfwfKbSA8e_nT94iqXa1/view?usp=sharing" target="_blank" rel="noopener" style="display:block;width:max-content;margin-top:12px;">View slides →</a>
             </div>
-          </article><article id="proj-ecommerce" class="feature feature-right reveal">
+          </article><article id="proj-ecommerce" class="feature feature-left reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="deck" data-deck>
                 <div class="deck-badge">Project deck · 31 slides</div>
@@ -422,7 +446,7 @@
               </div>
             </div>
             <div class="feature-body">
-              <p class="feature-kicker">Feature 02 · Marketing analytics</p>
+              <p class="feature-kicker">Feature 03 · Marketing analytics</p>
               <h3>E-Commerce Marketing Analytics</h3>
               <p class="feature-goal"><strong>Goal:</strong> measure which traffic sources and landing pages actually drive revenue, not just clicks.</p>
               <ul class="feature-points"><li>Six analysis modules covering traffic source ROI and landing-page funnels.</li><li>A/B lift and channel mix, read against seasonality.</li><li>Customer retention analysis to close the loop.</li></ul>
@@ -431,7 +455,7 @@
               <div class="p-tags"><span class="tag">SQL</span><span class="tag">A/B testing</span><span class="tag">Channel ROI</span><span class="tag">Funnel analysis</span></div>
               <a class="feature-link" href="https://github.com/cc9404/sql_analysis_ethan_chou" target="_blank" rel="noopener">View GitHub repo →</a><a class="feature-link" href="https://drive.google.com/file/d/1omuU7B_EsaUdekRZ99d5S9XwJmT6RBGP/view?usp=sharing" target="_blank" rel="noopener" style="display:block;width:max-content;margin-top:12px;">View slides →</a>
             </div>
-          </article><article id="proj-rfm" class="feature feature-left reveal">
+          </article><article id="proj-rfm" class="feature feature-right reveal">
             <div class="feature-media" aria-hidden="false">
               <div class="deck" data-deck>
                 <div class="deck-badge">Project deck · 18 slides</div>
@@ -444,7 +468,7 @@
               </div>
             </div>
             <div class="feature-body">
-              <p class="feature-kicker">Feature 03 · Marketing analytics</p>
+              <p class="feature-kicker">Feature 04 · Marketing analytics</p>
               <h3>Customer Segmentation <span class="amp" style="font-family:Inter,Arial,sans-serif;font-style:normal;font-weight:400;">&amp;</span> RFM Scoring</h3>
               <p class="feature-goal"><strong>Goal:</strong> split UK retail customers into groups that each need a different retention strategy.</p>
               <ul class="feature-points"><li>Quartile-based RFM scoring on recency, frequency, and monetary value.</li><li>Customer-level aggregation from raw transactions to find high-value customers.</li></ul>
@@ -466,7 +490,7 @@
               </div>
             </div>
             <div class="feature-body">
-              <p class="feature-kicker">Feature 04 · Marketing analytics</p>
+              <p class="feature-kicker">Feature 05 · Marketing analytics</p>
               <h3>Market Basket Analysis</h3>
               <p class="feature-goal"><strong>Goal:</strong> find which products customers buy together, and use those pairings to design bundles and cross-sell offers.</p>
               <ul class="feature-points"><li>Apriori association rules on 380 French transaction baskets covering 1,541 products.</li><li>Filtered for lift of at least 2.0 and confidence of at least 60%.</li><li>Recommended partyware bundles, tiered collector pricing, and checkout cross-sells.</li></ul>
